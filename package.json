@@ -1,7 +1,7 @@
 {
-  "name": "public-transport-app",
+  "name": "transportme",
   "version": "0.0.0",
-  "description": "Small description for public-transport-app goes here",
+  "description": "Small description for transportme goes here",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -40,8 +40,5 @@
     "ember-resolver": "^2.0.3",
     "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1"
-  },
-  "dependencies": {
-    "ember-cli-sass": "^5.4.0"
   }
 }

@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'public-transport-app',
+    modulePrefix: 'transportme',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
