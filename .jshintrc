@@ -28,5 +28,8 @@
   "white": false,
   "eqnull": true,
   "esversion": 6,
-  "unused": true
+  "unused": true,
+  "globals": {
+    "google": false
+  }
 }
