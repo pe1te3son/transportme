@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row search-train-cont">
     <form class="col s12 m10 offset-m1 l8 offset-l2">
-      {{md-input label='Journey begins' name="startRoute" class="col s6"}}
-      {{md-input label='Journey ends' name="endRoute" class="col s6" }}
+      {{md-input label='Journey begins' name="startRoute" valueBinding="startRoute" class="col s6 startRoute" focusIn="locationFrom" }}
+      {{md-input label='Journey ends' name="endRoute" valueBinding="endRoute" class="col s6 endRoute" focusIn="locationTo" }}
 
       <div class="col s12 text-right">
           <button class="btn waves-effect waves-light" type="submit" name="submitSearch" {{action "fetchData"}} >Search
@@ -12,6 +12,8 @@
     </form>
   </div>{{!-- /row  --}}
 
+  <p>{{startRoute}}</p>
+  <p>{{endRoute}}</p>
   {{outlet}}
 
 </div>{{!-- /container  --}}
