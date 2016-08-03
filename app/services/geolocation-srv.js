@@ -40,6 +40,7 @@ export default Ember.Service.extend({
            lat: position.coords.latitude,
            lng: position.coords.longitude
          };
+         /* global google */
          var circle = new google.maps.Circle({
            center: geolocation,
            radius: position.coords.accuracy
