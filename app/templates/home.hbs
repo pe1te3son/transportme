@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row search-train-cont">
     <form class="col s12 m10 offset-m1 l8 offset-l2">
-      {{md-input label='Journey begins' name="startRoute" value=startRoute class="col s6 startRoute" focusIn="locationFrom" }}
+      {{md-input label='Journey begins' name="startRoute" value=startRoute class="col s6 startRoute" focusIn="locationFrom"}}
       {{md-input label='Journey ends' name="endRoute" value=endRoute class="col s6 endRoute" focusIn="locationTo" }}
 
       <div class="col s12 text-right">
@@ -11,6 +11,16 @@
       </div>
     </form>
   </div>{{!-- /row  --}}
+
+{{log model.routes}}
+
+{{#if model.routes}}
+  <div class="row">
+    {{#each model.routes as |route|}}
+      {{route-single route=route}}
+    {{/each}}
+  </div>
+{{/if}}
 
   {{outlet}}
 
