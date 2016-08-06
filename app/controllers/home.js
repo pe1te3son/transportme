@@ -11,12 +11,18 @@ export default Ember.Controller.extend({
     test(){
       console.log(this.routeDateUnformated, this.routeTimeUnformated );
     },
-    
+
     fetchData(){
       let routeData = this.get('autoComlete').fetchRouteData();
+      if(this.get('routeDateUnformated')){
+        routeData.routeDate = this.get('routeDateUnformated');
+      }
+      if(this.get('routeTimeUnformated')){
+        routeData.routeTime = this.get('routeTimeUnformated');
+      }
+
       this.get('trasportapi').requestDataFromTrasportApi(routeData)
       .then((response)=>{
-        console.log(response);
         this.set('model', response);
       })
       .catch((err)=>{
@@ -52,5 +58,7 @@ export default Ember.Controller.extend({
         }
       });
     },
-  }//actions
+  },//actions
+
+
 });
