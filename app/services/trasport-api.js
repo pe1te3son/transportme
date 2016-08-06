@@ -12,15 +12,20 @@ export default Ember.Service.extend({
     let fromLat = data.from.geometry.location.lat();
     let toLng = data.to.geometry.location.lng();
     let toLat = data.to.geometry.location.lat();
+    let date = '2016-08-09';
+    let time = '20:50';
 
     //let link = 'http://transportapi.com/v3/uk/public/journey/from/stop:London+bridge/to/stop:Canary+wharf/at/2016-10-18/15:29.json?api_key='+ apiKey +'&app_id='+ apiId + '&modes=bus-train-tube';
-    let link = 'http://transportapi.com/v3/uk/public/journey/from/lonlat:'+ fromLng +','+ fromLat +'/to/lonlat:'+ toLng +','+ toLat +'.json?api_key='+ apiKey +'&app_id='+ apiId + '&modes=bus-train-tube';
+    // let link = 'http://transportapi.com/v3/uk/public/journey/from/lonlat:'+ fromLng +','+ fromLat +'/to/lonlat:'+ toLng +','+ toLat +'.json?api_key='+ apiKey +'&app_id='+ apiId + '&modes=bus-train-tube';
+
+    let link = `http://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}/by/${date}/${time}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube&region=southeast`;
     console.log(link);
 
     return fetch(link)
       .then((response)=>{
         return response.json()
           .then((jsonResponse)=>{
+            console.log(jsonResponse);
             return jsonResponse;
           });
       }).catch((err)=>{
