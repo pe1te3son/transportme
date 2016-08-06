@@ -4,6 +4,7 @@
     "ember": "~2.7.0",
     "ember-cli-shims": "0.1.1",
     "ember-qunit-notifications": "0.1.0",
-    "materialize": "0.97.6"
+    "materialize": "0.97.6",
+    "pickadate": "^3.5.6"
   }
 }
