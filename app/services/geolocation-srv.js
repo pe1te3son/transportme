@@ -9,7 +9,7 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   routeData: {},
 
-  init: function($elemenId, $objectName){
+  initAutocomplete: function($elemenId, $objectName){
       // Create the autocomplete object, restricting the search to geographical
       // location types.
       if($elemenId){
