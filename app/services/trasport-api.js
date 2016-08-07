@@ -6,22 +6,8 @@ export default Ember.Service.extend({
   },
 
   requestDataFromTrasportApi(data){
-    const apiKey = '210cd3d0b88f32603edc631a13ce14f9';
-    const apiId = '81d2c3ad';
-    let fromLng = data.from.geometry.location.lng();
-    let fromLat = data.from.geometry.location.lat();
-    let toLng = data.to.geometry.location.lng();
-    let toLat = data.to.geometry.location.lat();
-    let date = '2016-08-09';
-    let time = '20:50';
 
-    //let link = 'http://transportapi.com/v3/uk/public/journey/from/stop:London+bridge/to/stop:Canary+wharf/at/2016-10-18/15:29.json?api_key='+ apiKey +'&app_id='+ apiId + '&modes=bus-train-tube';
-    // let link = 'http://transportapi.com/v3/uk/public/journey/from/lonlat:'+ fromLng +','+ fromLat +'/to/lonlat:'+ toLng +','+ toLat +'.json?api_key='+ apiKey +'&app_id='+ apiId + '&modes=bus-train-tube';
-
-    let link = `http://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}/by/${date}/${time}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube&region=southeast`;
-    console.log(link);
-
-    return fetch(link)
+    return fetch(this.buildRequestLink(data))
       .then((response)=>{
         return response.json()
           .then((jsonResponse)=>{
@@ -57,5 +43,32 @@ export default Ember.Service.extend({
     }
 
   },
+
+  buildRequestLink(data){
+    console.log(data);
+
+    const apiKey = '210cd3d0b88f32603edc631a13ce14f9';
+    const apiId = '81d2c3ad';
+    let fromLng = data.from.geometry.location.lng();
+    let fromLat = data.from.geometry.location.lat();
+    let toLng = data.to.geometry.location.lng();
+    let toLat = data.to.geometry.location.lat();
+    let date = this.formatDate(data.routeDate);
+    let time = this.formatTime(data.routeTime);
+    console.log(date, time);
+
+    //&region=southeast
+
+    if(date && time) {
+      let link = `http://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}/by/${date}/${time}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
+      console.log(link);
+      return link;
+    } else {
+      let link = `http://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
+      console.log(link);
+      return link;
+    }
+
+  }
 
 });
