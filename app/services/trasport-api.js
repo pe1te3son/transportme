@@ -33,4 +33,29 @@ export default Ember.Service.extend({
       });
   },
 
+  formatDate(date){
+    if(date){
+      let year = date.getFullYear();
+      let day =  date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+      let month = date.getMonth() + 1 < 10 ? `0${(date.getMonth() + 1)}` : date.getMonth() + 1;
+      return `${year}-${month}-${day}`;
+    } else {
+      return null;
+    }
+
+  },
+
+  formatTime(time){
+    if(time){
+      if(time % 60 === 0){
+        return `${time / 60}:00`;
+      } else {
+        return `${(time - 30) / 60 }:30`;
+      }
+    } else {
+      return null;
+    }
+
+  },
+
 });
