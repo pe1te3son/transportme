@@ -28,16 +28,15 @@ export default Ember.Controller.extend({
       .catch((err)=>{
         console.log('Failed to fetch route: ' + err);
       });
-
     },
 
     locationFrom(e){
       // The service require element id and string to name an object
-      this.get('autoComlete').initAutocomplete(e.currentTarget.id, 'from');
+      this.get('autoComlete').initAutocomplete(e.id, 'from');
     },
 
     locationTo(e){
-      this.get('autoComlete').initAutocomplete(e.currentTarget.id, 'to');
+      this.get('autoComlete').initAutocomplete(e.id, 'to');
     },
 
     dateSelected(element){

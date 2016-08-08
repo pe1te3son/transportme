@@ -2,8 +2,17 @@
   <div class="row search-train-cont">
     <form class="col s12 m10 offset-m1 l8 offset-l2">
       <div class="col s12">
-        {{md-input label='Journey begins' name="startRoute" value=startRoute class="col s12 m6 startRoute" focusIn="locationFrom"}}
-        {{md-input label='Journey ends' name="endRoute" value=endRoute class="col s12 m6 endRoute" focusIn="locationTo" }}
+        {{!-- {{md-input placeholder="start" label='Journey begins' name="startRoute" value=startRoute class="col s12 m6 startRoute" focusIn="locationFrom"}} --}}
+        {{!-- {{md-input placeholder="ends" label='Journey ends' name="endRoute" value=endRoute class="col s12 m6 endRoute" focusIn="locationTo" }} --}}
+
+        <div class="input-field col s12 m6">
+          <input placeholder="Start" type="text" id="route-start" class="validate" value={{startRoute}} onfocus={{action "locationFrom" value="target"}}/>
+          <label for="route-start">Date</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input placeholder="Ends" type="text" id="route-ends" class="validate" value={{endRoute}} onfocus={{action "locationTo" value="target"}}/>
+          <label for="route-ends">Date</label>
+        </div>
       </div>
 
       <div class="col s12">
@@ -29,14 +38,18 @@
     </form>
   </div>{{!-- /row  --}}
 
-{{#if model.routes}}
-  <div class="row">
-    {{#each model.routes as |route|}}
-      {{route-single route=route}}
-    {{/each}}
-  </div>
-{{/if}}
+<div class="row">
+  <ul class="col s6">
+      {{#each model.routes as |route|}}
+        {{route-single route=route}}
+      {{/each}}
+  </ul>
 
-  {{outlet}}
+  <div class="col s6">
+    {{outlet}}
+  </div>
+</div>
+
+
 
 </div>{{!-- /container  --}}
