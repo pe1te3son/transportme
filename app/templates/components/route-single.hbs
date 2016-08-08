@@ -1,8 +1,21 @@
-<div class="col s12">
-  <div class="card">
-    <h5 class="start-route">{{route.arrival_time}}</h5>
-    <h5 class="end-route">{{route.departure_time}}</h5>
+<li class="col s12 route-single card">
+  <div class="">
+    <h5 class="start-route">Start: {{route.arrival_time}}</h5>
+    <h5 class="end-route">End: {{route.departure_time}}</h5>
   </div>
-</div>
+
+  <div class="">
+    <span class="route-line">From: {{route.route_parts.0.from_point_name}}</span>
+    <span class="route-line">To: {{route.route_parts.0.to_point_name}}</span>
+    <span class="route-line">Mode: {{route.route_parts.0.mode}}</span>
+    <span class="route-line">Duration: {{route.route_parts.0.duration}}</span>
+    <span class="route-line">Departure time:{{route.route_parts.0.departure_time}}</span>
+    <span class="route-line">Arrival time: {{route.route_parts.0.arrival_time}}</span>
+    <span class="route-line">Tube name: {{route.route_parts.0.line_name}}</span>
+    <span class="route-line">Tube destination: {{route.route_parts.0.destination}}</span>
+  </div>
+
+</li>
+
 
 {{yield}}
