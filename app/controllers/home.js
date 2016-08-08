@@ -9,7 +9,6 @@ export default Ember.Controller.extend({
 
   actions: {
     test(){
-      console.log(this.routeDateUnformated, this.routeTimeUnformated );
     },
 
     fetchData(){
