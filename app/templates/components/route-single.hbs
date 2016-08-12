@@ -1,7 +1,9 @@
+{{#link-to 'home.route-details' route.departure_time}}
+
 <li class="col s12 route-single card">
   <div class="">
-    <h5 class="start-route">Start: {{route.arrival_time}}</h5>
-    <h5 class="end-route">End: {{route.departure_time}}</h5>
+    <h5 class="start-route">Start: {{route.departure_time}}</h5>
+    <h5 class="end-route">End: {{route.arrival_time}}</h5>
   </div>
 
   <div class="">
@@ -16,6 +18,8 @@
   </div>
 
 </li>
+
+{{/link-to}}
 
 
 {{yield}}
