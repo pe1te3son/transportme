@@ -39,15 +39,12 @@
   </div>{{!-- /row  --}}
 
 <div class="row">
-  <ul class="col s6">
+  <ul class="col s12">
       {{#each model.routes as |route|}}
         {{route-single route=route}}
       {{/each}}
   </ul>
 
-  <div class="col s6">
-    {{outlet}}
-  </div>
 </div>
 
 

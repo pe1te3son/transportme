@@ -1,12 +1,12 @@
-{{#link-to 'home.route-details' route.departure_time}}
+{{!-- {{#link-to 'home.route-details' route.departure_time action="showDetails"}} --}}
 
-<li class="col s12 route-single card">
-  <div class="">
+{{!-- <div class="col s12 route-single card" {{action 'showDetails'}}> --}}
+  <div class="route-head">
     <h5 class="start-route">Start: {{route.departure_time}}</h5>
     <h5 class="end-route">End: {{route.arrival_time}}</h5>
   </div>
 
-  <div class="">
+  <div class="route-details hide">
     <span class="route-line">From: {{route.route_parts.0.from_point_name}}</span>
     <span class="route-line">To: {{route.route_parts.0.to_point_name}}</span>
     <span class="route-line">Mode: {{route.route_parts.0.mode}}</span>
@@ -17,9 +17,9 @@
     <span class="route-line">Tube destination: {{route.route_parts.0.destination}}</span>
   </div>
 
-</li>
+{{!-- </div> --}}
 
-{{/link-to}}
+{{!-- {{/link-to}} --}}
 
 
 {{yield}}
