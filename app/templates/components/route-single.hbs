@@ -7,14 +7,18 @@
   </div>
 
   <div class="route-details hide">
-    <span class="route-line">From: {{route.route_parts.0.from_point_name}}</span>
-    <span class="route-line">To: {{route.route_parts.0.to_point_name}}</span>
-    <span class="route-line">Mode: {{route.route_parts.0.mode}}</span>
-    <span class="route-line">Duration: {{route.route_parts.0.duration}}</span>
-    <span class="route-line">Departure time:{{route.route_parts.0.departure_time}}</span>
-    <span class="route-line">Arrival time: {{route.route_parts.0.arrival_time}}</span>
-    <span class="route-line">Tube name: {{route.route_parts.0.line_name}}</span>
-    <span class="route-line">Tube destination: {{route.route_parts.0.destination}}</span>
+    {{#each route.route_parts as |routePart|}}
+    <div class="route-part">
+      <span class="route-line">To: {{routePart.to_point_name}}</span>
+      <span class="route-line">Mode: {{route-mode routePart.mode}}</span>
+      <span class="route-line">Duration: {{routePart.duration}}</span>
+      <span class="route-line">Departure time:{{routePart.departure_time}}</span>
+      <span class="route-line">Arrival time: {{routePart.arrival_time}}</span>
+      <span class="route-line">Tube name: {{routePart.line_name}}</span>
+      <span class="route-line">Tube destination: {{routePart.destination}}</span>
+    </div>
+    {{/each}}
+
   </div>
 
 {{!-- </div> --}}
