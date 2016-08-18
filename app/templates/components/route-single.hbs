@@ -2,8 +2,9 @@
 
 {{!-- <div class="col s12 route-single card" {{action 'showDetails'}}> --}}
   <div class="route-head">
-    <h5 class="start-route">Start: {{route.departure_time}}</h5>
-    <h5 class="end-route">End: {{route.arrival_time}}</h5>
+    <p class="route-departs">Departs: {{route.departure_time}}</p>
+    <p class="route-arrives">Arrives: {{route.arrival_time}}</p>
+    <h5 class="route-duration">{{route-duration route.duration}}</h5>
   </div>
 
   <div class="route-details hide">
