@@ -1,22 +1,42 @@
 {{!-- {{#link-to 'home.route-details' route.departure_time action="showDetails"}} --}}
 
 {{!-- <div class="col s12 route-single card" {{action 'showDetails'}}> --}}
-  <div class="route-head">
-    <p class="route-departs">Departs: {{route.departure_time}}</p>
-    <p class="route-arrives">Arrives: {{route.arrival_time}}</p>
-    <h5 class="route-duration">{{route-duration route.duration}}</h5>
+  <div class="route-head col s12">
+    <div class="col s6">
+      <p class="route-departs">Departs: {{route.departure_time}}</p>
+      <p class="route-arrives">Arrives: {{route.arrival_time}}</p>
+    </div>
+
+    <div class="col s6 text-right">
+      <p class="route-duration">{{route-duration route.duration}}</p>
+      <div class="route-modes">
+        {{#each route.route_parts as |route|}}
+          <i class="route-mode fa fa-{{route-mode route.mode}}" aria-hidden="true"></i>
+        {{/each}}
+      </div>
+    </div>
+
   </div>
 
-  <div class="route-details hide">
+  <div class="route-details hide col s12">
     {{#each route.route_parts as |routePart|}}
     <div class="route-part">
+      <div class="route-part-head">
+        <div class="route-part-thumb">
+          <i class="route-mode fa fa-{{route-mode routePart.mode}}" aria-hidden="true"></i>
+          <span class="route-line route-part-depart">{{routePart.departure_time}}</span>
+        </div>
+        <span class="route-part-from">{{routePart.from_point_name}}</span>
+      </div>
+
       <span class="route-line">To: {{routePart.to_point_name}}</span>
-      <span class="route-line">Mode: {{route-mode routePart.mode}}</span>
-      <span class="route-line">Duration: {{routePart.duration}}</span>
-      <span class="route-line">Departure time:{{routePart.departure_time}}</span>
+      <span class="route-line">Duration: {{route-duration routePart.duration}}</span>
       <span class="route-line">Arrival time: {{routePart.arrival_time}}</span>
       <span class="route-line">Tube name: {{routePart.line_name}}</span>
       <span class="route-line">Tube destination: {{routePart.destination}}</span>
+    </div>
+    <div class="route-part-seperator">
+      {{fa-icon "chevron-down"}}
     </div>
     {{/each}}
 

@@ -1,6 +1,46 @@
 .route-line
   display: block
 
+.route-modes
+  >i
+    background: $color3
+    padding: 3px
+    color: $color2
+    border-radius: 3px
+    margin-right: 5px
+
 .route-part
-  background: #999
   margin-bottom: 20px
+  margin-top: 20px
+
+.route-head
+  background: $color2
+  color: $color3
+
+.col.route-single
+  padding: 0
+
+.route-part-seperator
+  color: $color1
+  &:last-child
+    display: none
+
+.route-part-head
+  margin-bottom: 15px
+  +clearfix
+
+.route-part-thumb
+  display: inline-block
+  float: left
+  text-align: center
+  margin-right: 20px
+  color: $color3
+  background: $color1
+  border-radius: 8px
+  padding: 5px
+
+.route-part-from
+  float: left
+  padding-top: 10px
+  font-size: 1.1em
+  font-weight: bold
