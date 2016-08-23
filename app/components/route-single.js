@@ -6,7 +6,10 @@ export default Ember.Component.extend({
   classNames: ['col s12 route-single card'],
 
   click(e){
-    console.log(e);
     $(e.currentTarget).find('.route-details').toggleClass('hide');
+    $('.tooltipped').tooltip({
+      delay: 20,
+      position: 'top'
+    });
   }
 });
