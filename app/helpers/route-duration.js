@@ -3,7 +3,6 @@ import Ember from 'ember';
 export function routeDuration(params/*, hash*/) {
   let timeSplit = params[0].split(':');
   let timeFormated = '';
-  console.log(timeSplit);
   if(timeSplit[0] !== '00'){
     timeFormated += `${timeSplit[0].replace(/^0+/, '')} hrs `;
   }
