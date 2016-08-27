@@ -1,27 +1,36 @@
 import Ember from 'ember';
 
 export function routeMode(params/*, hash*/) {
-  let [mode] = params;
-  let routeIcon = '';
+  let [mode, toReturn] = params;
+  let routeData = {};
 
   switch (mode) {
     case 'foot':
-      routeIcon = 'male';
+      routeData.faIcon = 'male';
+      routeData.tooltip = 'On foot';
       break;
 
     case 'tube':
-      routeIcon = 'subway';
+      routeData.faIcon = 'subway';
+      routeData.tooltip = 'Tube';
       break;
 
     case 'bus':
-      routeIcon = 'bus';
+      routeData.faIcon = 'bus';
+      routeData.tooltip = 'Bus';
       break;
 
     case 'train':
-      routeIcon = 'train';
+      routeData.faIcon = 'train';
+      routeData.tooltip = 'Train';
       break;
   }
-  return routeIcon;
+
+  if(toReturn === 'faIcon'){
+    return routeData.faIcon;
+  } else if(toReturn === 'tooltip'){
+    return routeData.tooltip;
+  }
 }
 
 export default Ember.Helper.helper(routeMode);
