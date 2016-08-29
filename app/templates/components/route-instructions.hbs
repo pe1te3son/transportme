@@ -1,0 +1,29 @@
+{{#if (compare currentRoutePart.mode 'foot') }}
+  <p>
+    <strong>Walk to </strong>
+    <span>&nbsp;{{ currentRoutePart.to_point_name}}</span>
+  </p>
+
+{{/if}}
+
+{{#if (compare currentRoutePart.mode 'tube') }}
+  {{log currentRoutePart.line_name}}
+  <p>
+    <span class="subway-name {{subway-color currentRoutePart.line_name}}">{{currentRoutePart.line_name}}</span><strong>towards </strong><span>{{currentRoutePart.destination}}</span>
+  </p>
+  <p><strong>Stop: </strong> {{ currentRoutePart.to_point_name}}</p>
+{{/if}}
+
+{{#if (compare currentRoutePart.mode 'train') }}
+  <p>
+    <span>{{currentRoutePart.line_name}}&nbsp;</span><strong>towards </strong><span>{{currentRoutePart.destination}}</span>
+  </p>
+  <p><strong>Stop: </strong> {{ currentRoutePart.to_point_name}}</p>
+{{/if}}
+
+{{#if (compare currentRoutePart.mode 'bus') }}
+  <p>
+    Take a bus <span class="bus-line">{{currentRoutePart.line_name}}</span><strong>towards </strong><span>{{currentRoutePart.destination}}</span>
+  </p>
+  <p><strong>Stop: </strong> {{ currentRoutePart.to_point_name}}</p>
+{{/if}}
