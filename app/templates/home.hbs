@@ -1,18 +1,16 @@
 <div class="background-image"></div>
 <div class="container">
   <div class="row search-train-cont">
-    <form class="col s12 m10 offset-m1 l8 offset-l2">
+    <form class="col s12 l10 offset-l1 search-train-form">
       <div class="col s12">
-        {{!-- {{md-input placeholder="start" label='Journey begins' name="startRoute" value=startRoute class="col s12 m6 startRoute" focusIn="locationFrom"}} --}}
-        {{!-- {{md-input placeholder="ends" label='Journey ends' name="endRoute" value=endRoute class="col s12 m6 endRoute" focusIn="locationTo" }} --}}
 
-        <div class="input-field col s12 m6">
+        <div class="custom-input-cont col s12 m6">
+          <label for="route-start" class="hide">Start</label>
           <input placeholder="Start" type="text" id="route-start" class="validate" value={{startRoute}} onfocus={{action "locationFrom" value="target"}}/>
-          <label for="route-start">Date</label>
         </div>
-        <div class="input-field col s12 m6">
+        <div class="col s12 m6">
+          <label for="route-ends" class="hide">Ends</label>
           <input placeholder="Ends" type="text" id="route-ends" class="validate" value={{endRoute}} onfocus={{action "locationTo" value="target"}}/>
-          <label for="route-ends">Date</label>
         </div>
       </div>
 
@@ -27,11 +25,9 @@
           <label for="route-time">Time</label>
         </div>
 
-        <button type="button" name="button" {{ action "test" }}>test</button>
       </div>
 
 
-      <div class="col s12 text-right">
           <button class="btn waves-effect waves-light" type="button" name="submitSearch" {{action "fetchData"}} >Search
             <i class="material-icons left">search</i>
           </button>
