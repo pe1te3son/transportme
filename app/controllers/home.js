@@ -6,12 +6,13 @@ export default Ember.Controller.extend({
   trasportapi: Ember.inject.service('trasport-api'),
   routeDateUnformated: null,
   routeTimeUnformated: null,
+  isLoading: false,
 
   actions: {
-    test(){
-    },
-
     fetchData(){
+      // Initialize loader
+      this.set('isLoading', true);
+
       let routeData = this.get('autoComlete').fetchRouteData();
       if(this.get('routeDateUnformated')){
         routeData.routeDate = this.get('routeDateUnformated');
@@ -22,10 +23,12 @@ export default Ember.Controller.extend({
 
       this.get('trasportapi').requestDataFromTrasportApi(routeData)
       .then((response)=>{
+        this.set('isLoading', false);
         this.set('model', response);
       })
       .catch((err)=>{
         console.log('Failed to fetch route: ' + err);
+        this.set('isLoading', false);
       });
     },
 

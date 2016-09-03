@@ -37,6 +37,7 @@
   </div>{{!-- /row  --}}
 
 <div class="row">
+  {{circle-loader isLoading=isLoading}}
   <ul class="col s12">
       {{#each model.routes as |route|}}
         {{route-single route=route}}
