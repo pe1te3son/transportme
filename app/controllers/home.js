@@ -14,6 +14,12 @@ export default Ember.Controller.extend({
       this.set('isLoading', true);
 
       let routeData = this.get('autoComlete').fetchRouteData();
+
+      if(!routeData.from || !routeData.to){
+        this.set('isLoading', false);
+        return;
+      }
+
       if(this.get('routeDateUnformated')){
         routeData.routeDate = this.get('routeDateUnformated');
       }
