@@ -20,6 +20,7 @@ export default Ember.Controller.extend({
         return;
       }
 
+      $('.background-form').addClass('background-up');
       if(this.get('routeDateUnformated')){
         routeData.routeDate = this.get('routeDateUnformated');
       }
