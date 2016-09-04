@@ -10,17 +10,13 @@ export default Ember.Controller.extend({
 
   actions: {
     fetchData(){
-      // Initialize loader
-      setTimeout(()=>{
-        this.set('loaderOn', true);
-      }, 500);
-
       let routeData = this.get('autoComlete').fetchRouteData();
-
       if(!routeData.from || !routeData.to){
-        this.set('loaderOn', false);
         return;
       }
+
+      // Initialize loader
+      this.set('loaderOn', true);
 
       // Clear search results
       this.set('model', null);
@@ -28,7 +24,7 @@ export default Ember.Controller.extend({
       // Slide form up
       $('.search-train-form').addClass('form-up');
 
-      // If time and date selected add it to search query object
+      // If time and date selected add them to the search query object
       if(this.get('routeDateUnformated')){
         routeData.routeDate = this.get('routeDateUnformated');
       }
@@ -57,8 +53,7 @@ export default Ember.Controller.extend({
     },
 
     dateSelected(element){
-      // requires for ember to work inside pikadate object
-      let vm = this;
+      let vm = this;// requires for ember to work inside pikadate object
       $(element).pickadate({
         onSet: function(date){
           vm.set('routeDateUnformated', new Date(date.select));
