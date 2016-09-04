@@ -6,21 +6,29 @@ export default Ember.Controller.extend({
   trasportapi: Ember.inject.service('trasport-api'),
   routeDateUnformated: null,
   routeTimeUnformated: null,
-  isLoading: false,
+  loaderOn: false,
 
   actions: {
     fetchData(){
       // Initialize loader
-      this.set('isLoading', true);
+      setTimeout(()=>{
+        this.set('loaderOn', true);
+      }, 500);
 
       let routeData = this.get('autoComlete').fetchRouteData();
 
       if(!routeData.from || !routeData.to){
-        this.set('isLoading', false);
+        this.set('loaderOn', false);
         return;
       }
 
-      $('.background-form').addClass('background-up');
+      // Clear search results
+      this.set('model', null);
+
+      // Slide form up
+      $('.search-train-form').addClass('form-up');
+
+      // If time and date selected add it to search query object
       if(this.get('routeDateUnformated')){
         routeData.routeDate = this.get('routeDateUnformated');
       }
@@ -30,12 +38,12 @@ export default Ember.Controller.extend({
 
       this.get('trasportapi').requestDataFromTrasportApi(routeData)
       .then((response)=>{
-        this.set('isLoading', false);
+        this.set('loaderOn', false);
         this.set('model', response);
       })
       .catch((err)=>{
         console.log('Failed to fetch route: ' + err);
-        this.set('isLoading', false);
+        this.set('loaderOn', false);
       });
     },
 
