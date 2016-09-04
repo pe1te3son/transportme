@@ -1,43 +1,42 @@
-<div class="background-form">
-  <div class="container">
-    <div class="row">
-      <form class="col s12 m10 offset-m1 l8 offset-l2 search-train-form">
-        <div class="col s12">
+<div class="container">
+  <div class="row">
+    <form class="col s12 m10 offset-m1 l8 offset-l2 search-train-form card">
+      <div class="col s12">
 
-          <div class="custom-input-cont col s12 m6">
-            <label for="route-start" class="hide">Start</label>
-            <input placeholder="Start" type="text" id="route-start" class="validate" value={{startRoute}} onfocus={{action "locationFrom" value="target"}}/>
-          </div>
-          <div class="col s12 m6">
-            <label for="route-ends" class="hide">Ends</label>
-            <input placeholder="Ends" type="text" id="route-ends" class="validate" value={{endRoute}} onfocus={{action "locationTo" value="target"}}/>
-          </div>
+        <div class="custom-input-cont col s12 m6">
+          <label for="route-start" class="hide">Start</label>
+          <input placeholder="Start" type="text" id="route-start" class="validate" value={{startRoute}} onfocus={{action "locationFrom" value="target"}}/>
+        </div>
+        <div class="col s12 m6">
+          <label for="route-ends" class="hide">Ends</label>
+          <input placeholder="Ends" type="text" id="route-ends" class="validate" value={{endRoute}} onfocus={{action "locationTo" value="target"}}/>
+        </div>
+      </div>
+
+      <div class="col s12">
+        <div class="input-field col s8">
+          <input type="text" id="route-date" class="validate" value={{routeDate}} onfocus={{action "dateSelected" value="target"}}/>
+          <label for="route-date">Date</label>
         </div>
 
-        <div class="col s12">
-          <div class="input-field col s8">
-            <input type="text" id="route-date" class="validate" value={{routeDate}} onfocus={{action "dateSelected" value="target"}}/>
-            <label for="route-date">Date</label>
-          </div>
-
-          <div class="input-field col s4">
-            <input type="text" id="route-time" class="validate" value={{routeTime}} onfocus={{action "timeSelected" value="target"}}/>
-            <label for="route-time">Time</label>
-          </div>
-
+        <div class="input-field col s4">
+          <input type="text" id="route-time" class="validate" value={{routeTime}} onfocus={{action "timeSelected" value="target"}}/>
+          <label for="route-time">Time</label>
         </div>
 
+      </div>
 
-        <div class="col s12 text-right sep-up">
-            {{circle-loader isLoading=isLoading}}
-            <button id="search-submit" class="btn waves-effect waves-light" type="button" name="submitSearch" {{action "fetchData"}} >Search
-              <i class="material-icons left">search</i>
-            </button>
-        </div>
-      </form>
-    </div>{{!-- /row  --}}
-  </div>{{!-- /container --}}
-</div>{{!-- /background-form --}}
+
+      <div class="col s12 text-right sep-up">
+          {{circle-loader isLoading=isLoading}}
+          <button id="search-submit" class="btn waves-effect waves-light" type="button" name="submitSearch" {{action "fetchData"}} >Search
+            <i class="material-icons left">search</i>
+          </button>
+      </div>
+    </form>
+  </div>{{!-- /row  --}}
+</div>{{!-- /container --}}
+
 
 <div class="container">
   <div class="row search-result-cont">
