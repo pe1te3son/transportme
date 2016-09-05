@@ -7,9 +7,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('home', { path: '/'}, function() {
-    this.route('route-details', {path: '/:departure_time'});
-  });
+  this.route('home', { path: '/'});
+  this.route('recent');
 });
 
 export default Router;
