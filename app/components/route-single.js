@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   actions: {
     showDetails(e){
-      $(e.element).find('.route-details').toggleClass('hide');
+      $(e.element).find('.route-details').toggleClass('show-details');
       $('.tooltipped').tooltip({
         delay: 20,
         position: 'top'
