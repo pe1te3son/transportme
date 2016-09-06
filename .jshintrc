@@ -30,6 +30,7 @@
   "esversion": 6,
   "unused": true,
   "globals": {
-    "google": false
+    "google": false,
+    "Materialize": false
   }
 }
