@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
         this.set('model', response);
       })
       .catch((err)=>{
-        console.log('Failed to fetch route: ' + err);
+        console.log('Trasportapi request failed: ' + err);
         this.set('loaderOn', false);
       });
     },

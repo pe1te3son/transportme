@@ -16,6 +16,7 @@ export default Ember.Service.extend({
           });
       }).catch((err)=>{
         console.log('Failded to fetch data from trasportApi: ' + err);
+        Materialize.toast('There has been error finding a route. Please try again later.', 6000);
       });
   },
 
