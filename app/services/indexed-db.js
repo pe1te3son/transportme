@@ -6,11 +6,11 @@ export default Ember.Service.extend({
   openDb($data){
     let { dbName, version, store} = $data;
 
-    let dbPromised = idb.open(dbName, version, upgradeDB => { // jshint ignore:line
+    return idb.open(dbName, version, upgradeDB => {
       upgradeDB.createObjectStore(store);
-      console.log('db open in');
+      console.log(`"${dbName}" CREATED!`);
     }).then(()=>{
-      console.log('db open out');
+      console.log(`"${dbName}" opened!`);
     });
   },
 
@@ -20,14 +20,13 @@ export default Ember.Service.extend({
 
     if(!value || !key || !store){ return; }
 
-    let dbPromised = idb.open($dbName).then((db)=>{ // jshint ignore:line
-      console.log(db);
+    return idb.open($dbName).then((db)=>{
       let tx = db.transaction(store, 'readwrite');
       let storeToSaveInto = tx.objectStore(store);
       storeToSaveInto.put(value, key);
       return tx.complete;
     }).then(()=>{
-      console.log('Item added');
+      console.log(`"${key}" saved into "${$dbName}"`);
     });
 
   },
