@@ -37,12 +37,11 @@ export default Ember.Service.extend({
     console.log(`"${$database}" deleted!`);
   },
 
-  getRoutes($dbInfo){
-    let { dbName, store } = $dbInfo;
+  getRoutes($store){
 
-    return idb.open(dbName).then((db)=>{
-      let tx = db.transaction(store);
-      let routesStore = tx.objectStore(store);
+    return idb.open(this.get('dbName')).then((db)=>{
+      let tx = db.transaction($store);
+      let routesStore = tx.objectStore($store);
       return routesStore.getAll();
     });
 
