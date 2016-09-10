@@ -4,13 +4,19 @@ import $ from 'jquery';
 export default Ember.Controller.extend({
   autoComlete: Ember.inject.service('geolocation-srv'),
   trasportapi: Ember.inject.service('trasport-api'),
+  indexedDbPromised: Ember.inject.service('indexed-db'),
   routeDateUnformated: null,
   routeTimeUnformated: null,
   loaderOn: false,
+  databaseStore: 'journeys',
+
+  init(){
+    this.get('indexedDbPromised').createIndexedDbStore(this.get('databaseStore'));
+  },
 
   actions: {
     test(){
-      Materialize.toast('<a href="#">I am a toast!</a>', 3000, 'rounded');
+      Materialize.toast('I am a toast!', 3000);
     },
     fetchData(){
       let routeData = this.get('autoComlete').fetchRouteData();
@@ -39,6 +45,17 @@ export default Ember.Controller.extend({
       .then((response)=>{
         this.set('loaderOn', false);
         this.set('model', response);
+        response.favorite = false;
+        response.recent = true;
+        response.from = routeData.from.name;
+        response.to = routeData.to.name;
+        response.id =`${routeData.from.name}->${routeData.to.name}`;
+        this.get('indexedDbPromised').saveToDb(this.get('databaseStore'), {
+          key: response.id,
+          value: response
+        }).then(()=>{
+          console.log('added to db');
+        });
       })
       .catch((err)=>{
         console.log('Trasportapi request failed: ' + err);
