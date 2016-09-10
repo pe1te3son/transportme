@@ -2,31 +2,31 @@ import Ember from 'ember';
 
 /* global idb */
 export default Ember.Service.extend({
-  dbPromised: null,
-  openDb($data){
-    let { dbName, version, store} = $data;
+  dbName: 'transportme-v1',
+  version: 1,
+  createIndexedDbStore($store){
 
-    return idb.open(dbName, version, upgradeDB => {
-      upgradeDB.createObjectStore(store);
-      console.log(`"${dbName}" CREATED!`);
+    return idb.open(this.get('dbName'), this.get('version'), upgradeDB => {
+      upgradeDB.createObjectStore($store);
+      console.log(`"${$store}" CREATED!`);
     }).then(()=>{
-      console.log(`"${dbName}" opened!`);
+      console.log(`"${this.get('dbName')}" opened!`);
     });
   },
 
-  saveToDb($dbName, $dataObject){
+  saveToDb($store, $dataObject){
 
-    let { key, value, store } = $dataObject;
+    let { key, value } = $dataObject;
 
-    if(!value || !key || !store){ return; }
+    if(!value || !key || !$store){ return; }
 
-    return idb.open($dbName).then((db)=>{
-      let tx = db.transaction(store, 'readwrite');
-      let storeToSaveInto = tx.objectStore(store);
+    return idb.open(this.get('dbName')).then((db)=>{
+      let tx = db.transaction($store, 'readwrite');
+      let storeToSaveInto = tx.objectStore($store);
       storeToSaveInto.put(value, key);
       return tx.complete;
     }).then(()=>{
-      console.log(`"${key}" saved into "${$dbName}"`);
+      console.log(`"${key}" saved into "${this.get('dbName')}->[${$store}]"`);
     });
 
   },
