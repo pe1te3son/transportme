@@ -1,13 +1,22 @@
+.set-favorite
+  display: inline-block
+  margin-left: 20px
+  font-size: 1.6em
+  &:hover
+    cursor: pointer
+    color: #ffeb3b
+
 .route-line
   display: block
 
 .route-modes
   >i
     background: $color3
-    padding: 3px
+    padding: 4px 6px
     color: $color2
     border-radius: 3px
     margin-right: 5px
+    margin-bottom: 2px
 
 .route-part
   margin-top: 20px
@@ -16,8 +25,10 @@
   background: $color2
   color: $color3
   &:hover
-    background: darken($color2, 5%)
+    background: $color7
     cursor: pointer
+    .route-mode
+      color: $color7
 
 .col.route-single
   padding: 0
