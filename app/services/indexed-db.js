@@ -7,7 +7,7 @@ export default Ember.Service.extend({
   createIndexedDbStore($store){
 
     return idb.open(this.get('dbName'), this.get('version'), upgradeDB => {
-      upgradeDB.createObjectStore($store);
+      upgradeDB.createObjectStore($store).createIndex('by-date', 'request_time');
       console.log(`"${$store}" CREATED!`);
     }).then(()=>{
       console.log(`"${this.get('dbName')}" opened!`);
