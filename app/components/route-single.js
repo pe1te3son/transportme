@@ -9,8 +9,7 @@ export default Ember.Component.extend({
     showDetails(e){
       $(e.element).find('.route-details').toggleClass('show-details');
       $('.tooltipped').tooltip({
-        delay: 20,
-        position: 'top'
+        delay: 20
       });
     }
   }
