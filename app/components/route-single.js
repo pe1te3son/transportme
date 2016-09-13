@@ -11,6 +11,10 @@ export default Ember.Component.extend({
       $('.tooltipped').tooltip({
         delay: 20
       });
+    },
+
+    addToFavorites(e){
+      console.log(e);
     }
   }
 
