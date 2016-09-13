@@ -8,9 +8,9 @@
 {{/if}}
 
 {{#if (compare currentRoutePart.mode 'tube') }}
-  <div class="route-instructions tube-border">
+  <div class="route-instructions tube-border {{subway-color currentRoutePart.line_name}}">
     <p>
-      <span class="subway-name {{subway-color currentRoutePart.line_name}} inline-block">{{currentRoutePart.line_name}}</span>
+      <span class="subway-name inline-block">{{currentRoutePart.line_name}}</span>
       <strong>towards </strong>
       <span class="inline-block">{{currentRoutePart.destination}}</span>
     </p>
