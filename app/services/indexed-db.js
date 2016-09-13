@@ -2,31 +2,32 @@ import Ember from 'ember';
 
 /* global idb */
 export default Ember.Service.extend({
-  dbName: 'transportme-v1',
-  version: 1,
-  createIndexedDbStore($store){
 
-    return idb.open(this.get('dbName'), this.get('version'), upgradeDB => {
-      upgradeDB.createObjectStore($store).createIndex('by-date', 'request_time');
-      console.log(`"${$store}" CREATED!`);
+  createIndexedDbStore($dbData){
+    let { $dbName, $dbStore, $dbVersion } = $dbData;
+
+    return idb.open($dbName,  $dbVersion, upgradeDB => {
+      upgradeDB.createObjectStore($dbStore).createIndex('by-date', 'request_time');
+      console.log(`"${$dbName}" CREATED!`);
+
     }).then(()=>{
-      console.log(`"${this.get('dbName')}" opened!`);
+      console.log(`"${$dbName}" opened!`);
     });
   },
 
-  saveToDb($store, $dataObject){
+  saveToDb($data){
 
-    let { key, value } = $dataObject;
+    const { $dbName, $dbStore, $key, $value } = $data;
 
-    if(!value || !key || !$store){ return; }
+    if(!$key || !$value){ return; }
 
-    return idb.open(this.get('dbName')).then((db)=>{
-      let tx = db.transaction($store, 'readwrite');
-      let storeToSaveInto = tx.objectStore($store);
-      storeToSaveInto.put(value, key);
+    return idb.open($dbName).then((db)=>{
+      let tx = db.transaction($dbStore, 'readwrite');
+      let storeToSaveInto = tx.objectStore($dbStore);
+      storeToSaveInto.put($value, $key);
       return tx.complete;
     }).then(()=>{
-      console.log(`"${key}" saved into "${this.get('dbName')}->[${$store}]"`);
+      console.log(`"${$key}" saved into "${$dbName}->[${$dbStore}]"`);
     });
 
   },
@@ -37,11 +38,13 @@ export default Ember.Service.extend({
     console.log(`"${$database}" deleted!`);
   },
 
-  getRoutes($store){
+  getRoutes($db){
 
-    return idb.open(this.get('dbName')).then((db)=>{
-      let tx = db.transaction($store);
-      let routesStore = tx.objectStore($store);
+    const { $dbName, $dbStore } = $db;
+
+    return idb.open($dbName).then((db)=>{
+      const tx = db.transaction( $dbStore, 'readonly');
+      const routesStore = tx.objectStore( $dbStore);
       return routesStore.getAll();
     });
 

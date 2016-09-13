@@ -54,14 +54,14 @@ export default Ember.Controller.extend({
       .then((response)=>{
         this.set('loaderOn', false);
         this.set('model', response);
-        response.favorite = false;
-        response.recent = true;
         response.from = routeData.from.name;
         response.to = routeData.to.name;
         response.id =`${routeData.from.name}->${routeData.to.name}`;
-        this.get('indexedDbPromised').saveToDb(this.get('databaseStore'), {
-          key: response.id,
-          value: response
+        this.get('indexedDbPromised').saveToDb({
+          $dbName: 'transportme-recent',
+          $dbStore: 'recent',
+          $key: response.id,
+          $value: response
         }).then(()=>{
           console.log('added to db');
         });
