@@ -7,7 +7,7 @@
   <div class="col s7 text-right">
     <p class="route-duration">
       <span>{{route-duration route.duration}}</span>
-      <i class="fa fa-star set-favorite" aria-hidden="true" {{action "addToFavorites" route}}></i>
+      <button class="fa fa-star set-favorite" aria-hidden="true" style="z-index: 100" {{action "addToFavorites" route}}></button>
     </p>
     <div class="route-modes">
       {{#each route.route_parts as |route|}}
