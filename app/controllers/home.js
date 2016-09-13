@@ -8,10 +8,19 @@ export default Ember.Controller.extend({
   routeDateUnformated: null,
   routeTimeUnformated: null,
   loaderOn: false,
-  databaseStore: 'journeys',
 
   init(){
-    this.get('indexedDbPromised').createIndexedDbStore(this.get('databaseStore'));
+    this.get('indexedDbPromised').createIndexedDbStore({
+      $dbName: 'transportme-recent',
+      $dbStore: 'recent',
+      $dbVersion: 1
+    });
+
+    this.get('indexedDbPromised').createIndexedDbStore({
+      $dbName: 'transportme-favorites',
+      $dbStore: 'favorites',
+      $dbVersion: 2
+    });
   },
 
   actions: {
