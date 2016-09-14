@@ -3,12 +3,6 @@ import Ember from 'ember';
 export function fromTo(params/*, hash*/) {
   let [ model, direction] = params;
 
-  if (!Array.prototype.last){
-      Array.prototype.last = function(){
-          return this[this.length - 1];
-      };
-  }
-
   if(!model || !model.routes || !direction){ return; }
 
   if(direction === 'from'){
