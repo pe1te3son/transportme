@@ -26,8 +26,6 @@ export default Ember.Service.extend({
       let storeToSaveInto = tx.objectStore($dbStore);
       storeToSaveInto.put($value, $key);
       return tx.complete;
-    }).then(()=>{
-      console.log(`"${$key}" saved into "${$dbName}->[${$dbStore}]"`);
     });
 
   },
@@ -48,5 +46,14 @@ export default Ember.Service.extend({
       return routesStore.getAll();
     });
 
+  },
+
+  removeById($db){
+    const { $dbName, $dbStore, $id } = $db;
+
+    return idb.open($dbName).then((db)=>{
+      const tx = db.transaction($dbStore, 'readwrite');
+      return tx.objectStore($dbStore).delete($id);
+    });
   }
 });
