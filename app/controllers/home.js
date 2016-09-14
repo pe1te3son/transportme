@@ -9,20 +9,6 @@ export default Ember.Controller.extend({
   routeTimeUnformated: null,
   loaderOn: false,
 
-  init(){
-    this.get('indexedDbPromised').createIndexedDbStore({
-      $dbName: 'transportme-recent',
-      $dbStore: 'recent',
-      $dbVersion: 1
-    });
-
-    this.get('indexedDbPromised').createIndexedDbStore({
-      $dbName: 'transportme-favorites',
-      $dbStore: 'favorites',
-      $dbVersion: 2
-    });
-  },
-
   actions: {
     test(){
       Materialize.toast('I am a toast!', 3000);
