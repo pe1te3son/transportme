@@ -14,23 +14,42 @@ export default Ember.Component.extend({
       });
     },
 
-    addToFavorites(e){
+    addToFavorites(event){
 
-      // TODO move prototype to global, refactor long string
-      if (!Array.prototype.last){
-          Array.prototype.last = function(){
-              return this[this.length - 1];
-          };
-      }
-      this.get('indexedDbPromised').saveToDb({
-        $dbName: 'transportme-favorites',
-        $dbStore: 'favorites',
-        $key: `${JSON.parse(JSON.stringify(e.route_parts[0].from_point_name))}->${JSON.parse(JSON.stringify(e.route_parts.last().to_point_name))}`,
-        $value: JSON.parse(JSON.stringify(e))
-      }).then(()=>{
-        console.log('added to favorites');
+      return new Promise((resolve, reject)=>{
+        if(!event) { reject(); }
+
+        const el = $(this.get('element')).find('.set-favorite');
+        el.toggleClass('favorite-added');
+        resolve(el.hasClass('favorite-added'));
+
+      }).then((isInDB)=>{
+
+        const jorneyId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time))}->${JSON.parse(JSON.stringify(event.route_parts[0].from_point_name))}->${JSON.parse(JSON.stringify(event.route_parts.last().to_point_name))}`;
+
+        if(!isInDB){
+          return this.get('indexedDbPromised').removeById({
+                    $dbName: 'transportme-favorites',
+                    $dbStore: 'favorites',
+                    $id: jorneyId
+                  }).then(()=>{
+                    console.log(`${jorneyId} removed from favorites`);
+                  });
+        }
+
+        return this.get('indexedDbPromised').saveToDb({
+                  $dbName: 'transportme-favorites',
+                  $dbStore: 'favorites',
+                  $key: jorneyId,
+                  $value: JSON.parse(JSON.stringify(event))
+                }).then(()=>{
+                  console.log(`${jorneyId} added to favorites`);
+                  Materialize.toast('Journey added to favorites', 1000);
+                });
       });
-    }
-  }
+    }// add to favorites
+
+  },//Actions
+
 
 });
