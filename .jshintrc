@@ -31,6 +31,7 @@
   "unused": true,
   "globals": {
     "google": false,
+    "Promise": false,
     "Materialize": false
   }
 }
