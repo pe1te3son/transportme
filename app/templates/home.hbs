@@ -39,13 +39,13 @@
 
 <div class="container">
   <div class="row search-result-cont">
-
-    <ul class="col s12 m10 offset-m1">
+    <div class="col s12 m10 offset-m1">
       {{linear-loader isLoading=loaderOn}}
+      <ul>
         {{#each model.routes as |route|}}
           {{route-single route=route}}
         {{/each}}
-    </ul>
-
+      </ul>
+    </div>
   </div>
 </div>{{!-- /container  --}}
