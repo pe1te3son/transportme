@@ -1,10 +1,15 @@
 .set-favorite
   display: inline-block
-  margin-left: 20px
+  margin-left: 10px
   font-size: 1.6em
+  padding: 3px 6px
+  text-shadow: 1px 1px 5px #999
   &:hover
     cursor: pointer
-    color: #ffeb3b
+    color: lighten($color8, 10%)
+
+.favorite-added
+  color: $color8
 
 .route-line
   display: block
