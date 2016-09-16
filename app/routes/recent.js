@@ -10,14 +10,4 @@ export default Ember.Route.extend({
       return resp;
     });
   },
-
-  actions: {
-    toLocSelected(e){
-      console.log(e);
-    },
-
-    fromLocSelected(e){
-      console.log(e);
-    }
-  },
 });
