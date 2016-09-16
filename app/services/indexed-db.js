@@ -55,5 +55,14 @@ export default Ember.Service.extend({
       const tx = db.transaction($dbStore, 'readwrite');
       return tx.objectStore($dbStore).delete($id);
     });
+  },
+
+  getById($db){
+    const { $dbName, $dbStore, $id } = $db;
+
+    return idb.open($dbName).then((db)=>{
+      const tx = db.transaction($dbStore, 'readwrite');
+      return tx.objectStore($dbStore).get($id);
+    });
   }
 });
