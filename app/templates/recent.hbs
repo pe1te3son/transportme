@@ -14,18 +14,13 @@
   </div>{{!-- /row--}}
 
   <div class="row search-result-cont">
-    <button type="button" {{action "test" "to"}}>click</button>
-    {{!-- <div class="col s12 m10 offset-m1">
-      {{linear-loader isLoading=loaderOn}}
+    <div class="col s12 m10 offset-m1">
       <ul>
-        {{#each model.1.routes as |route|}}
+        {{#each toDisplay.routes as |route|}}
           {{route-single route=route}}
         {{/each}}
       </ul>
-    </div> --}}
+    </div>
   </div>{{!-- /row --}}
 
 </div>{{!-- /container --}}
-
-
-{{log model}}
