@@ -2,23 +2,12 @@
   <div class="row">
     <form class="recents-form card col s12 m10 offset-m1 l8 offset-l2">
 
-      <div class="loc-from-cont col s12 m6">
-        {{input list="loc-from" placeholder="From" value=fromLocation}}
-        <datalist id="loc-from">
-          {{#each (uniq-list model 'from') as |item|}}
-            <option value="{{item}}"></option>
-          {{/each}}
-        </datalist>
+      <div class="input-field col s12 m6">
+        {{select-recent list=(uniq-list model 'from' fromLocationList) optionSelected="fromLocSelected"}}
       </div>
 
-      <div class="loc-from-cont col s12 m6">
-        {{!-- <input type="text" value={{toLocation}} placeholder="To"> --}}
-        {{input list="loc-to" placeholder="To" value=toLocation}}
-        <datalist id="loc-to">
-          {{#each (uniq-list model 'to') as |item|}}
-            <option value="{{item}}"></option>
-          {{/each}}
-        </datalist>
+      <div class="input-field col s12 m6">
+        {{select-recent list=(uniq-list model 'to' toLocationList) optionSelected="toLocSelected"}}
       </div>
 
     </form>

@@ -9,5 +9,15 @@ export default Ember.Route.extend({
     }).then((resp)=>{
       return resp;
     });
-  }
+  },
+
+  actions: {
+    toLocSelected(e){
+      console.log(e);
+    },
+
+    fromLocSelected(e){
+      console.log(e);
+    }
+  },
 });
