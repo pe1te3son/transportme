@@ -10,9 +10,6 @@ export default Ember.Controller.extend({
   loaderOn: false,
 
   actions: {
-    test(){
-      Materialize.toast('I am a toast!', 3000);
-    },
     fetchData(){
       let routeData = this.get('autoComlete').fetchRouteData();
       if(!routeData.from || !routeData.to){
