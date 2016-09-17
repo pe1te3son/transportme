@@ -1,0 +1,19 @@
+{{log fav}}
+
+<div class="fav-thumb col s12">
+
+  <div class="col s2 m2 l2 text-right">
+    <strong class="display-block">From: </strong>
+    <strong class="display-block">To: </strong>
+  </div>
+
+  <div class="fav-route-names col s7 m9 l8">
+    <span class="display-block">{{fav-thumb fav.fromTo mode="departure"}}</span>
+    <span class="display-block">{{fav-thumb fav.fromTo mode="destination"}}</span>
+  </div>
+
+  <div class="fav-route-time col s3 m1 l2">
+    <span class="display-block">{{fav.departure_time}}</span>
+    <span class="display-block">{{fav.arrival_time}}</span>
+  </div>
+</div>
