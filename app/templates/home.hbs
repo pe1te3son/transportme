@@ -43,7 +43,7 @@
       {{linear-loader isLoading=loaderOn}}
       <ul>
         {{#each model.routes as |route|}}
-          {{route-single route=route}}
+          {{route-single route=route fromTo=model.fromTo}}
         {{/each}}
       </ul>
     </div>

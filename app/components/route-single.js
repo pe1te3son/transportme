@@ -15,17 +15,19 @@ export default Ember.Component.extend({
     },
 
     addToFavorites(event){
-
       return new Promise((resolve, reject)=>{
         if(!event) { reject(); }
 
         const el = $(this.get('element')).find('.set-favorite');
+
+        // Set jorney hook
+        event.fromTo = this.get('fromTo');
         el.toggleClass('favorite-added');
         resolve(el.hasClass('favorite-added'));
 
       }).then((isInDB)=>{
 
-        const jorneyId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time))}->${JSON.parse(JSON.stringify(event.route_parts[0].from_point_name))}->${JSON.parse(JSON.stringify(event.route_parts.last().to_point_name))}`;
+        const jorneyId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time))}->${this.get('fromTo')}`;
 
         if(!isInDB){
           return this.get('indexedDbPromised').removeById({

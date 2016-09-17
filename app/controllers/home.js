@@ -38,15 +38,14 @@ export default Ember.Controller.extend({
 
       this.get('trasportapi').requestDataFromTrasportApi(routeData)
       .then((response)=>{
-        this.set('loaderOn', false);
         this.set('model', response);
         response.from = routeData.from.name;
         response.to = routeData.to.name;
-        response.id =`${routeData.from.name}->${routeData.to.name}`;
+        response.fromTo =`${routeData.from.name}->${routeData.to.name}`;
         this.get('indexedDbPromised').saveToDb({
           $dbName: 'transportme-recent',
           $dbStore: 'recent',
-          $key: response.id,
+          $key: response.fromTo,
           $value: response
         }).then(()=>{
           console.log('added to db');
