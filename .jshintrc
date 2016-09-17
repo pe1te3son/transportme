@@ -2,7 +2,9 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "Promise",
+    "Materialize"
   ],
   "browser": true,
   "boss": true,
@@ -30,8 +32,6 @@
   "esversion": 6,
   "unused": true,
   "globals": {
-    "google": false,
-    "Promise": false,
-    "Materialize": false
+    "google": false
   }
 }
