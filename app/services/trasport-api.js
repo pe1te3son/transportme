@@ -1,17 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Service.extend({
-  init(){
-    console.log('im trasport service');
-  },
-
   requestDataFromTrasportApi(data){
 
     return fetch(this.buildRequestLink(data))
       .then((response)=>{
         return response.json()
           .then((jsonResponse)=>{
-            console.log(jsonResponse);
             return jsonResponse;
           });
       }).catch((err)=>{
