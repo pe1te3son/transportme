@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
 
   // Watch for changes on input
   fromLocationObserver: function(){
-    this.removeAnimation('.search-result-cont', 'cont-back')
+    this.toggleAnimation('.select-result-cont', 'cont-back', 'remove')
     .then(()=>{
 
       //Search based on "from location" input if found update "to location"
@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
 
   toLocationObserver: function(){
     // wait for animation to
-    this.removeAnimation('.search-result-cont', 'cont-back')
+    this.toggleAnimation('.select-result-cont', 'cont-back', 'remove')
     .then(()=>{
 
       //Filter based on "from location" input if found update "to location"
@@ -66,19 +66,24 @@ export default Ember.Controller.extend({
       }).then((route)=>{
 
         this.set('toDisplay', route);
-        $('.search-result-cont').addClass('cont-back');
+        this.toggleAnimation('.select-result-cont', 'cont-back', 'add');
 
       });
     }
   },//displayRecent
 
-  removeAnimation($el, $animation){
+  toggleAnimation($el, $animation, $option){
     return new Promise((resolve, reject)=>{
-      resolve(
-        $($el).removeClass($animation)
-      );
-      reject();
-    });
-  }
 
+      if($option === 'add'){
+        resolve($($el).addClass($animation));
+      } else if( $option === 'remove' ){
+        resolve($($el).removeClass($animation));
+      }
+
+      reject('No option provided!');
+    }).catch((err)=>{
+      console.error(`function toggleAnimation(): ${err}`);
+    });
+  },
 });
