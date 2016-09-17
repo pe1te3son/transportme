@@ -38,7 +38,6 @@ export default Ember.Controller.extend({
 
       this.get('trasportapi').requestDataFromTrasportApi(routeData)
       .then((response)=>{
-        this.set('model', response);
         response.from = routeData.from.name;
         response.to = routeData.to.name;
         response.fromTo =`${routeData.from.name}->${routeData.to.name}`;
@@ -50,6 +49,11 @@ export default Ember.Controller.extend({
         }).then(()=>{
           console.log('added to db');
         });
+        return response;
+      })
+      .then((resp)=>{
+        this.set('loaderOn', false);
+        this.set('model', resp);
       })
       .catch((err)=>{
         console.log('Trasportapi request failed: ' + err);
