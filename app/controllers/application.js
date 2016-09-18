@@ -6,13 +6,16 @@ export default Ember.Controller.extend({
     this.get('indexedDbPromised').createIndexedDbStore({
       $dbName: 'transportme-recent',
       $dbStore: 'recent',
-      $dbVersion: 1
+      $dbVersion: 1,
+      $keyPath: 'fromTo',
+      $index: ['by-date', 'request_time']
     });
 
     this.get('indexedDbPromised').createIndexedDbStore({
       $dbName: 'transportme-favorites',
       $dbStore: 'favorites',
-      $dbVersion: 2
+      $dbVersion: 2,
+      $keyPath: 'favId'
     });
   },
 });

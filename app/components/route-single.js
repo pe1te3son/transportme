@@ -15,6 +15,7 @@ export default Ember.Component.extend({
     },
 
     addToFavorites(event){
+      // Set all data in promise when resolved save or remove
       return new Promise((resolve, reject)=>{
         if(!event) { reject(); }
 
@@ -22,30 +23,30 @@ export default Ember.Component.extend({
 
         // Set jorney hook
         event.fromTo = this.get('fromTo');
+        event.favId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time))}->${this.get('fromTo')}`;
+
+        // Visual feedback
         el.toggleClass('favorite-added');
         resolve(el.hasClass('favorite-added'));
 
       }).then((isInDB)=>{
 
-        const jorneyId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time))}->${this.get('fromTo')}`;
-
         if(!isInDB){
           return this.get('indexedDbPromised').removeById({
                     $dbName: 'transportme-favorites',
                     $dbStore: 'favorites',
-                    $id: jorneyId
+                    $id: event.favId
                   }).then(()=>{
-                    console.log(`${jorneyId} removed from favorites`);
+                    console.log(`${event.favId} removed from favorites`);
                   });
         }
 
         return this.get('indexedDbPromised').saveToDb({
                   $dbName: 'transportme-favorites',
                   $dbStore: 'favorites',
-                  $key: jorneyId,
                   $value: JSON.parse(JSON.stringify(event))
                 }).then(()=>{
-                  console.log(`${jorneyId} added to favorites`);
+                  console.log(`${event.favId} added to favorites`);
                   Materialize.toast('Journey added to favorites', 1000);
                 });
       });

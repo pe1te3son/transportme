@@ -41,7 +41,6 @@ export default Ember.Controller.extend({
         this.get('indexedDbPromised').saveToDb({
           $dbName: 'transportme-recent',
           $dbStore: 'recent',
-          $key: response.fromTo,
           $value: response
         }).then(()=>{
           console.log('added to db');

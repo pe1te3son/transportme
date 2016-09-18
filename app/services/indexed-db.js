@@ -4,10 +4,20 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 
   createIndexedDbStore($dbData){
-    let { $dbName, $dbStore, $dbVersion } = $dbData;
+    let { $dbName, $dbStore, $dbVersion, $keyPath, $index } = $dbData;
 
     return idb.open($dbName,  $dbVersion, upgradeDB => {
-      upgradeDB.createObjectStore($dbStore).createIndex('by-date', 'request_time');
+
+      if($keyPath){
+        if($index){
+          upgradeDB.createObjectStore($dbStore, {keyPath: $keyPath}).createIndex($index[0], $index[1]);
+        } else {
+          upgradeDB.createObjectStore($dbStore, {keyPath: $keyPath});
+        }
+      }else {
+        upgradeDB.createObjectStore($dbStore);
+      }
+
       console.log(`"${$dbName}" CREATED!`);
 
     }).then(()=>{
@@ -19,12 +29,18 @@ export default Ember.Service.extend({
 
     const { $dbName, $dbStore, $key, $value } = $data;
 
-    if(!$key || !$value){ return; }
+    if(!$value){ return; }
 
     return idb.open($dbName).then((db)=>{
       let tx = db.transaction($dbStore, 'readwrite');
       let storeToSaveInto = tx.objectStore($dbStore);
-      storeToSaveInto.put($value, $key);
+
+      if($key){
+        storeToSaveInto.put($value, $key);
+      } else {
+        storeToSaveInto.put($value);
+      }
+
       return tx.complete;
     });
 
