@@ -17,7 +17,9 @@ Router.map(function() {
   this.route('home', { path: '/'});
   this.route('recent');
   this.route('404', {path: '/*path'});
-  this.route('favorites');
+  this.route('favorites', function() {
+    this.route('show-favorite', {path: '/:fromTo'});
+  });
 });
 
 export default Router;
