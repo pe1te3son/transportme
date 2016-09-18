@@ -9,12 +9,13 @@ _General design ideas_
   * ~~When search button clicked animate to the top and load search results route~~
   * ~~it maybe 2-4 results so make thumb nice and big~~
   * to the right display details of first route by default **[X]**
+  * load google map displaying part of the route on click
 
 #### Page - recent routes
 
   * ~~Recent should load by default if not empty~~
 
-_Complete_
+_Completed_
 
 
 #### Page - favorite routes
