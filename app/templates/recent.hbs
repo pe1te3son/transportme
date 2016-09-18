@@ -17,7 +17,7 @@
     <div class="col s12 m10 offset-m1">
       <ul>
         {{#each toDisplay.routes as |route|}}
-          {{route-single route=route}}
+          {{route-single route=route fromTo=toDisplay.fromTo}}
         {{/each}}
       </ul>
     </div>
