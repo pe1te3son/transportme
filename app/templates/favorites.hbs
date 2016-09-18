@@ -1,3 +1,16 @@
-{{outlet}}
+<div class="favorites-wrapper">
+  <div class="row">
+    <div class="col l6 s12">
 
-<h1>im favorites</h1>
+      {{#each model as |fav|}}
+        {{fav-head fav=fav}}
+      {{/each}}
+
+    </div>
+
+    <div class="col l6 s12">
+      {{outlet}}
+    </div>
+
+  </div>
+</div>
