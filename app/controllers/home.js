@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
       .then((response)=>{
         response.from = routeData.from.name;
         response.to = routeData.to.name;
-        response.fromTo =`${routeData.from.name}->${routeData.to.name}`;
+        response.fromTo =`${routeData.from.name}->${routeData.to.name}`.replace(/ /gi, "_");
         this.get('indexedDbPromised').saveToDb({
           $dbName: 'transportme-recent',
           $dbStore: 'recent',
