@@ -16,15 +16,6 @@ export default Ember.Controller.extend({
         return;
       }
 
-      // Initialize loader
-      this.set('loaderOn', true);
-
-      // Clear search results
-      this.set('model', null);
-
-      // Slide form up
-      $('.search-train-form').addClass('form-up');
-
       // If time and date selected add them to the search query object
       if(this.get('routeDateUnformated')){
         routeData.routeDate = this.get('routeDateUnformated');
@@ -32,6 +23,22 @@ export default Ember.Controller.extend({
       if(this.get('routeTimeUnformated')){
         routeData.routeTime = this.get('routeTimeUnformated');
       }
+
+      // Clear search results
+      this.set('model', null);
+
+      // Slide form up
+      $('.search-train-form').addClass('form-up');
+
+      // Delay loader while form is being animated
+      Ember.run.later(()=>{
+        // Initialize loader
+        this.set('loaderOn', true);
+        this.trasportapiInit(routeData)
+        // keeps scrollbar on while fetching data
+        .then(()=> $('body').css('min-height', '100vh') );
+
+      }, 300);
 
     },
 
