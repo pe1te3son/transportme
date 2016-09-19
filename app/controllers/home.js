@@ -54,6 +54,9 @@ export default Ember.Controller.extend({
     dateSelected(element){
       let vm = this;// requires for ember to work inside pikadate object
       $(element).pickadate({
+        min: ()=>{
+          return new Date();
+        },
         onSet: function(date){
           vm.set('routeDateUnformated', new Date(date.select));
         }
@@ -63,8 +66,12 @@ export default Ember.Controller.extend({
     timeSelected(element){
       let vm = this;
       $(element).pickatime({
+        min: ()=>{
+          return new Date();
+        },
         onSet: function(time){
           vm.set('routeTimeUnformated', time.select);
+          this.close();
         }
       });
     },
