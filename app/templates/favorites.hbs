@@ -3,7 +3,9 @@
     <div class="col l6 s12">
 
       {{#each model as |fav|}}
-        {{fav-head fav=fav}}
+        <ul>
+          {{fav-head fav=fav}}
+        </ul>
       {{/each}}
 
     </div>
