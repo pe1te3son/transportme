@@ -33,28 +33,6 @@ export default Ember.Controller.extend({
         routeData.routeTime = this.get('routeTimeUnformated');
       }
 
-      this.get('trasportapi').requestDataFromTrasportApi(routeData)
-      .then((response)=>{
-        response.from = routeData.from.name;
-        response.to = routeData.to.name;
-        response.fromTo =`${routeData.from.name}->${routeData.to.name}`.replace(/ /gi, "_");
-        this.get('indexedDbPromised').saveToDb({
-          $dbName: 'transportme-recent',
-          $dbStore: 'recent',
-          $value: response
-        }).then(()=>{
-          console.log('added to db');
-        });
-        return response;
-      })
-      .then((resp)=>{
-        this.set('loaderOn', false);
-        this.set('model', resp);
-      })
-      .catch((err)=>{
-        console.log('Trasportapi request failed: ' + err);
-        this.set('loaderOn', false);
-      });
     },
 
     locationFrom(e){
@@ -84,6 +62,37 @@ export default Ember.Controller.extend({
       });
     },
   },//actions
+
+  trasportapiInit(data){
+
+  return  this.get('trasportapi').requestDataFromTrasportApi(data)
+    .then((response)=>{
+
+      if(response.identification) {
+        Materialize.toast('Journey not Found!', 3000);
+        return;
+      }
+      response.from = data.from.name;
+      response.to = data.to.name;
+      response.fromTo =`${data.from.name}->${data.to.name}`.replace(/ /gi, "_");
+      this.get('indexedDbPromised').saveToDb({
+        $dbName: 'transportme-recent',
+        $dbStore: 'recent',
+        $value: response
+      }).then(()=>{
+        console.log('added to db');
+      });
+      return response;
+    })
+    .then((resp)=>{
+      this.set('loaderOn', false);
+      this.set('model', resp);
+    })
+    .catch((err)=>{
+      console.log('Trasportapi request failed: ' + err);
+      this.set('loaderOn', false);
+    });
+  },
 
 
 });
