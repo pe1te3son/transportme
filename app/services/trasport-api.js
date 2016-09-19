@@ -56,11 +56,11 @@ export default Ember.Service.extend({
     //&region=southeast
 
     if(date && time) {
-      let link = `http://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}/by/${date}/${time}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
+      let link = `https://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}/by/${date}/${time}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
       console.log(link);
       return link;
     } else {
-      let link = `http://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
+      let link = `https://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
       console.log(link);
       return link;
     }
