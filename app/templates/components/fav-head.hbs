@@ -1,21 +1,52 @@
 {{log fav}}
+{{#link-to "favorites.show-favorite" fav.fromTo class="modal-trigger"}}
+<div class="card hoverable fav-thumb">
 
-{{#link-to "favorites.show-favorite" fav.fromTo}}
-<div class="fav-thumb col s12">
+  <div class="fav-thumb-head">
+    <div class="fav-thumb-duration">
+      <span>{{fav.duration}}</span>
+    </div>
+    <div class="fav-thumb-modes">
+      {{#each fav.route_parts as |mode|}}
+        <i class="fa fa-{{route-mode mode.mode 'faIcon'}} fav-thumb-mode" aria-hidden="true"></i>
+      {{/each}}
+    </div>
+  </div>{{!-- /fav-head --}}
 
-  <div class="col s2 m2 l2 text-right">
-    <strong class="display-block">From: </strong>
-    <strong class="display-block">To: </strong>
+  <div class="divider"></div>
+
+  <div class="fav-thumb-body">
+
+    <div class="fav-thumb-route">
+      <div class="fav-from inline-block">
+        <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+        <span>{{from-to fav.fromTo mode="from"}}</span>
+      </div>
+      <div class="fav-to inline-block">
+        <i class="fa fa-flag-checkered" aria-hidden="true"></i>
+        <span>{{from-to fav.fromTo mode='to'}}</span>
+      </div>
+    </div>
+
+    <div class="fav-shedules-cont">
+      <div class="fav-shedule inline-block">
+        <div class="fav-thumb-departs inline-block">
+          <p>Departs: </p>
+          <span>{{fav.departure_time}}</span>
+        </div>
+        <div class="fav-thumb-arrives inline-block">
+          <p>Arrives: </p>
+          <span>{{fav.arrival_time}}</span>
+        </div>
+      </div>
+
+      <div class="remove-fav inline-block">
+        <p class="fa fa-trash remove-fav-icon hoverable" aria-hidden="true"></p>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="fav-route-names col s7 m9 l8">
-    <span class="display-block">{{fav-thumb fav.fromTo mode="departure"}}</span>
-    <span class="display-block">{{fav-thumb fav.fromTo mode="destination"}}</span>
-  </div>
-
-  <div class="fav-route-time col s3 m1 l2">
-    <span class="display-block">{{fav.departure_time}}</span>
-    <span class="display-block">{{fav.arrival_time}}</span>
-  </div>
-</div>
+</div>{{!-- /fav-thumb --}}
 {{/link-to}}
