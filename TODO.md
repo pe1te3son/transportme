@@ -2,7 +2,7 @@
 
 _General design ideas_
 
-  1. Create pages for ~~search~~, ~~recent~~, favorites and (map maybe?)
+  1. Create pages for ~~search~~, ~~recent~~, ~~favorites~~ and (map maybe?)
 
 #### Page - search
   * ~~Display inputs in the middle of the screen (google like)~~
@@ -13,7 +13,8 @@ _General design ideas_
 
 #### Page - recent routes
 
-  * ~~Recent should load by default if not empty~~
+  * Recent should load by default if not empty
+  * Limit DB to 15 routes
 
 _Completed_
 
@@ -22,9 +23,10 @@ _Completed_
   * Favorites should load by default if not empty **[X]**
   * ~~All favorites saved in indexedDB~~
   * If connection let user select time and on click refresh clicked favorite **[?]**
-  * display details of first route by default to the right
+  * display details of route in modal window
 
 
 #### General
   * ~~Deploy at firebase~~
   * Write tests
+  * Create manifest file
