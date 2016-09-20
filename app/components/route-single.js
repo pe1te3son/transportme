@@ -4,7 +4,7 @@ import $ from 'jquery';
 export default Ember.Component.extend({
   indexedDbPromised: Ember.inject.service('indexed-db'),
   tagName: 'li',
-  classNames: ['col s12 route-single card'],
+  classNames: ['col s12 route-single card hoverable'],
 
   actions: {
     showDetails(e){
