@@ -1,10 +1,11 @@
 {{log fav}}
-{{#link-to "favorites.show-favorite" fav.fromTo class="modal-trigger"}}
+{{#link-to "favorites.show-favorite" fav.favId class="modal-trigger"}}
 <div class="card hoverable fav-thumb">
 
   <div class="fav-thumb-head">
     <div class="fav-thumb-duration">
-      <span>{{fav.duration}}</span>
+      <i class="fa fa-hourglass-end" aria-hidden="true"></i>
+      <span>{{route-duration fav.duration}}</span>
     </div>
     <div class="fav-thumb-modes">
       {{#each fav.route_parts as |mode|}}
