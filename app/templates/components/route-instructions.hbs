@@ -18,6 +18,17 @@
   </div>
 {{/if}}
 
+{{#if (compare currentRoutePart.mode 'dlr') }}
+  <div class="route-instructions tube-border {{subway-color currentRoutePart.line_name}}">
+    <p>
+      <span class="subway-name inline-block">{{currentRoutePart.line_name}}</span>
+      <strong>towards </strong>
+      <span class="inline-block">{{currentRoutePart.destination}}</span>
+    </p>
+    <p><strong>Stop: </strong> {{ currentRoutePart.to_point_name}}</p>
+  </div>
+{{/if}}
+
 {{#if (compare currentRoutePart.mode 'train') }}
 <div class="route-instructions train-border">
   <p>

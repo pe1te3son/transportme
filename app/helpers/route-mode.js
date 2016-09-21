@@ -24,6 +24,11 @@ export function routeMode(params/*, hash*/) {
       routeData.faIcon = 'train';
       routeData.tooltip = 'Train';
       break;
+
+    case 'dlr':
+      routeData.faIcon = 'train';
+      routeData.tooltip = 'Dlr';
+      break;
   }
 
   if(toReturn === 'faIcon'){

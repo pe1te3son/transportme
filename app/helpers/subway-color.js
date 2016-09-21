@@ -47,6 +47,9 @@ export function subwayColor(params/*, hash*/) {
     case 'Waterloo & City':
       subwayColor = 'waterloo-line';
       break;
+    case 'DLR':
+      subwayColor = 'dlr-line';
+      break;
   }
   return subwayColor;
 }
