@@ -23,7 +23,7 @@ export default Ember.Component.extend({
 
         // Set jorney hook
         event.fromTo = this.get('fromTo');
-        event.favId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time))}->${this.get('fromTo')}`;
+        event.favId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time)).replace(/\:/gi, '_')}->${this.get('fromTo')}`;
 
         // Visual feedback
         el.toggleClass('favorite-added');
