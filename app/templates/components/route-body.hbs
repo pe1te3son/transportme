@@ -1,0 +1,22 @@
+{{#each route.route_parts as |routePart|}}
+<div class="route-part">
+
+  <div class="route-part-head col s12">
+    <div class="route-part-thumb tooltipped" aria-hidden="true" data-position="top" data-tooltip="{{route-mode routePart.mode 'tooltip'}}">
+      <i class="route-mode fa fa-{{route-mode routePart.mode 'faIcon'}}" aria-hidden="true"></i>
+      <span class="route-line route-part-depart">{{routePart.departure_time}}</span>
+    </div>
+    <span class="route-part-from">{{routePart.from_point_name}}</span>
+  </div>
+
+  <div class="route-part-body col s12">
+    <div class="col s10">
+      {{route-instructions currentRoutePart=routePart}}
+    </div>
+    <div class="col s2 text-right">
+      <p class="route-line">{{route-duration routePart.duration}}</p>
+    </div>
+  </div>
+
+</div>
+{{/each}}
