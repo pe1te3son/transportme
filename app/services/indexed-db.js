@@ -41,6 +41,17 @@ export default Ember.Service.extend({
         storeToSaveInto.put($value);
       }
 
+      // Remove oldest
+      if($dbStore === 'recent'){
+        storeToSaveInto.index('by-date').openCursor(null , 'prev').then((cursor)=>{
+          return cursor.advance(15);
+        }).then(function deleteRest(cursor){
+          if(!cursor){ return; }
+          cursor.delete();
+          return cursor.continue().then(deleteRest);
+        });
+      }
+
       return tx.complete;
     });
 
