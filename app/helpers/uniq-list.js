@@ -10,14 +10,14 @@ import Ember from 'ember';
 */
 export function uniqList(params/*, hash*/) {
 
-  const [ $array, $key, $optional ] = params;
+  const [ $object, $property, $optional ] = params;
 
   if(!$optional){
-    if($array){
-      return $array.getEach($key).uniq();
+    if($object){
+      return $object.getEach($property).uniq();
     }
   }
-  return $optional.getEach($key).uniq();
+  return $optional.getEach($property).uniq();
 
 }
 
