@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
   routeDateUnformated: null,
   routeTimeUnformated: null,
   loaderOn: false,
+  formUp: false,
 
   actions: {
     fetchData(){
@@ -28,7 +29,7 @@ export default Ember.Controller.extend({
       this.set('model', null);
 
       // Slide form up
-      $('.search-train-form').addClass('form-up');
+      this.set('formUp', true);
 
       // Delay loader while form is being animated
       Ember.run.later(()=>{
@@ -38,7 +39,7 @@ export default Ember.Controller.extend({
         // keeps scrollbar on while fetching data
         .then(()=> $('body').css('min-height', '100vh') );
 
-      }, 300);
+      }, 350);
 
     },
 

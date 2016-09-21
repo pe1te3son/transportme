@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <form class="col s12 m10 offset-m1 l8 offset-l2 search-train-form card">
+    <form class="col s12 m10 offset-m1 l8 offset-l2 search-train-form card {{if formUp 'form-up'}}">
 
       <div class="card-image">
         <img src="images/railway-station.jpg">
@@ -49,7 +49,7 @@
   <div class="row search-result-cont">
     <div class="col s12 m10 offset-m1">
       {{linear-loader isLoading=loaderOn}}
-      <ul>
+      <ul class="list-unstyled">
         {{#each model.routes as |route|}}
           {{route-single route=route fromTo=model.fromTo}}
         {{/each}}
