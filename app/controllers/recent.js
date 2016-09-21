@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import $ from 'jquery';
 
+/**
+* @name Recent Journeys page Controller
+* @desc Controls recent page
+* @requires { indexed-db } services
+*/
 export default Ember.Controller.extend({
   indexedDbPromised: Ember.inject.service('indexed-db'),
   toLocation: null,
@@ -69,6 +74,7 @@ export default Ember.Controller.extend({
     }
   },//displayRecent
 
+  // Slides up or down
   toggleAnimation($el, $animation, $option){
     return new Promise((resolve, reject)=>{
 

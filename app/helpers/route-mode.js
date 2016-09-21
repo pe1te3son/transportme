@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
+/**
+* @name Route mode helper
+* @desc Sets font awesome class ( last part) and tooltip text
+* @param { Array } params - mode and value to return either 'tooltip' or 'faIcon'
+* @return string
+*/
 export function routeMode(params/*, hash*/) {
   let [mode, toReturn] = params;
   let routeData = {};

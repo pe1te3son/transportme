@@ -1,6 +1,11 @@
 import Ember from 'ember';
 import $ from 'jquery';
 
+/**
+* @name Home page Controller
+* @desc Controls home page
+* @requires { 'geolocation-srv, trasport-api, indexed-db } services
+*/
 export default Ember.Controller.extend({
   autoComlete: Ember.inject.service('geolocation-srv'),
   trasportapi: Ember.inject.service('trasport-api'),
@@ -78,6 +83,7 @@ export default Ember.Controller.extend({
     },
   },//actions
 
+  // Fetches journeys
   trasportapiInit(data){
 
   return  this.get('trasportapi').requestDataFromTrasportApi(data)

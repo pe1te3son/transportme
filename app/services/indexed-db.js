@@ -1,9 +1,16 @@
 import Ember from 'ember';
-
-/* global idb */
+/**
+* @name indexedDB service
+* @desc Requires indexedDb promised https://github.com/jakearchibald/indexeddb-promised.
+*/
 export default Ember.Service.extend({
-
+  /**
+  * @name createIndexedDbStore
+  * @desc Creates Database and store. Sets index and keyPath if passed with object
+  * @param { Object } $dbData - options $dbName, $dbStore, $dbVersion are required
+  */
   createIndexedDbStore($dbData){
+    /* global idb */
     let { $dbName, $dbStore, $dbVersion, $keyPath, $index } = $dbData;
 
     return idb.open($dbName,  $dbVersion, upgradeDB => {
@@ -24,7 +31,7 @@ export default Ember.Service.extend({
       console.log(`"${$dbName}" opened!`);
     });
   },
-
+  
   saveToDb($data){
 
     const { $dbName, $dbStore, $key, $value } = $data;

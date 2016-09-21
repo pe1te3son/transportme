@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
+/**
+* @name Duration helper
+* @desc Formats route duration to nicer time format.
+* @param { String } params - time HH:mm:ss
+* @return string
+*/
 export function routeDuration(params/*, hash*/) {
   let timeSplit = params[0].split(':');
   let timeFormated = '';

@@ -1,5 +1,10 @@
 import Ember from 'ember';
 
+/**
+* @name TrasportApi service
+* @desc Fetches a data from trasportApi
+* @param { String } data - lat and lng from google api, time and date are optional
+*/
 export default Ember.Service.extend({
   requestDataFromTrasportApi(data){
 
@@ -15,6 +20,7 @@ export default Ember.Service.extend({
       });
   },
 
+  // Formats to correct date format for trasportApi request
   formatDate(date){
     if(date){
       let year = date.getFullYear();
@@ -40,6 +46,7 @@ export default Ember.Service.extend({
 
   },
 
+  // Builds link based on recevied data from search form
   buildRequestLink(data){
     console.log(data);
 

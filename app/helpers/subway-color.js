@@ -1,5 +1,12 @@
 import Ember from 'ember';
 
+/**
+* @name Subway color helper
+* @desc Sets class base on subway line name
+* @param { String } params - subway line name
+* @requires css classes styles to be set
+* @return string
+*/
 export function subwayColor(params/*, hash*/) {
   let [subwayName] = params;
   let subwayColor = '';

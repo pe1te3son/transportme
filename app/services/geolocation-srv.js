@@ -3,8 +3,8 @@ import Ember from 'ember';
 /**
 * @name Geolocation service
 * @desc Goole`s Autocomplete Api
-* @param string $objectName - name of the object to save return under
-* @param string $elemenId - id of input element
+* @param { String } $objectName - name of the object to save return under
+* @param { string } $elemenId - id of input element
 */
 export default Ember.Service.extend({
   routeData: {},
