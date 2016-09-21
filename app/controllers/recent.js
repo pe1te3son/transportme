@@ -32,7 +32,6 @@ export default Ember.Controller.extend({
       //Search based on "from location" input if found update "to location"
       let routeFound = this.get('model').filterBy('from', this.get('fromLocation'));
       if(!routeFound.length){
-        this.set('toLocation', null);
         // Resets selection list if default selected
         this.set('toLocationList', null);
         return;
@@ -52,7 +51,6 @@ export default Ember.Controller.extend({
       let routeFound = this.get('model').filterBy('to', this.get('toLocation'));
 
       if(!routeFound.length){
-        this.set('fromLocation', null);
         this.set('fromLocationList', null);
         return;
       }
