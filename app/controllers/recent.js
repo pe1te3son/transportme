@@ -13,6 +13,8 @@ export default Ember.Controller.extend({
   toLocationList: null,
   fromLocationList: null,
   toDisplay: null,
+  loadingRecent: false,
+  recentVisible: false,
 
   actions: {
     toLocSelected(itemSelected){
@@ -26,12 +28,11 @@ export default Ember.Controller.extend({
 
   // Watch for changes on input
   fromLocationObserver: function(){
-    this.toggleAnimation('.select-result-cont', 'cont-back', 'remove')
-    .then(()=>{
 
       //Search based on "from location" input if found update "to location"
       let routeFound = this.get('model').filterBy('from', this.get('fromLocation'));
       if(!routeFound.length){
+        this.set('recentVisible', false);
         // Resets selection list if default selected
         this.set('toLocationList', null);
         return;
@@ -39,35 +40,42 @@ export default Ember.Controller.extend({
       this.set('toLocationList', routeFound);
       this.displayRecent();
 
-    });
+
   }.observes('fromLocation'),
 
   toLocationObserver: function(){
     // wait for animation
-    this.toggleAnimation('.select-result-cont', 'cont-back', 'remove')
-    .then(()=>{
 
       //Filter based on "from location" input if found update "to location"
       let routeFound = this.get('model').filterBy('to', this.get('toLocation'));
 
       if(!routeFound.length){
+        this.set('recentVisible', false);
         this.set('fromLocationList', null);
         return;
       }
       this.set('fromLocationList', routeFound);
       this.displayRecent();
 
-    });
+
   }.observes('toLocation'),
 
   displayRecent(){
+    this.set('recentVisible', false);
     if(this.get('fromLocation') && this.get('toLocation')){
-      return this.get('indexedDbPromised').getById({
-        $dbName: 'transportme-recent',
-        $dbStore: 'recent',
-        $id: `${this.get('fromLocation')}->${this.get('toLocation')}`.replace(/ /gi, "_")
+      this.set('loadingRecent', true);
+        return this.get('indexedDbPromised').getById({
+          $dbName: 'transportme-recent',
+          $dbStore: 'recent',
+          $id: `${this.get('fromLocation')}->${this.get('toLocation')}`.replace(/ /gi, "_")
       }).then((route)=>{
-        this.set('toDisplay', route);
+        Ember.run.later(()=>{
+          this.set('loadingRecent', false);
+          console.log('i ran');
+          this.set('recentVisible', true);
+          this.set('toDisplay', route);
+        }, 500);
+
       }).then( ()=> this.toggleAnimation('.select-result-cont', 'cont-back', 'add') );
     }
   },//displayRecent

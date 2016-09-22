@@ -1,8 +1,14 @@
 .select-result-cont
-  max-height: 0
-  transition: max-height 0.4s ease-in-out
+  opacity: 0
+  transition: opacity 0.2s ease-in-out
   overflow: hidden
 
-.cont-back
-  max-height: 10000px
-  transition: max-height 1s ease-in-out
+.cont-open
+  opacity: 1
+  transition: opacity 0.5 ease-in-out
+
+@media screen and (max-width: 600px)
+  .page-title
+    margin-top: 20px
+  .no-margin.row
+    margin-bottom: 0

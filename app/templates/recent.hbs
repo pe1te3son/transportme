@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row no-margin">
     <h2 class="page-title text-center">Recently searched...</h2>
     <form class="recents-form card col s12 m10 offset-m1 l8 offset-l2">
 
@@ -14,9 +14,15 @@
     </form>
   </div>{{!-- /row--}}
 
-  <div class="row select-result-cont">
+  <div class="recent-loader row text-center">
+    <div class="col s12">
+      {{circle-loader isLoading=loadingRecent}}
+    </div>
+  </div>
+
+  <div class="row select-result-cont {{if recentVisible 'cont-open'}}">
     <div class="col s12 m10 offset-m1">
-      <ul>
+      <ul class="list-unstyled">
         {{#each toDisplay.routes as |route|}}
           {{route-single route=route fromTo=toDisplay.fromTo}}
         {{/each}}
