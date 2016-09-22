@@ -1,9 +1,10 @@
 .favorites-wrapper
   margin-top: 50px
   max-width: 1920px
+  backface-visibility: hidden
 
 .fav-thumb
-  background: $color7
+  background: $color9
   padding: 1%
   color: $color3
   &:hover
@@ -56,3 +57,7 @@
   border-radius: 5px
   &:hover
     cursor: pointer
+
+@media screen and (max-width: 600px)
+  .favorites-wrapper
+    margin-top: 20px
