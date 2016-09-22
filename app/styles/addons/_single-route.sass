@@ -3,7 +3,6 @@
   margin-left: 10px
   font-size: 1.6em
   padding: 3px 6px
-  text-shadow: 1px 1px 5px #999
   &:hover
     cursor: pointer
     color: lighten($color8, 10%)
@@ -31,6 +30,9 @@
   color: $color3
   &:hover
     cursor: pointer
+
+  .route-dur
+    margin-left: 10px
 
 .col.route-single
   padding: 0
@@ -99,3 +101,26 @@
 .show-details
   max-height: 10000px
   transition: max-height 0.75s ease
+
+@media screen and (max-width: 600px)
+  .route-departs, .route-arrives
+    display: inline-block
+    width: 48%
+
+  .route-duration
+    margin-top: 0
+    text-align: center
+
+  .route-arrives
+    text-align: right
+
+  .route-head
+    padding-bottom: 5px !important
+
+  .route-modes
+    text-align: center
+
+  .set-favorite
+    +position(absolute, 70px 5px null null)
+    font-size: 2em
+    z-index:

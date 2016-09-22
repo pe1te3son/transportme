@@ -1,12 +1,13 @@
 <div class="route-head col s12" {{action "showDetails" this}}>
-  <div class="col s5">
+  <div class="col s12 m5">
     <p class="route-departs">Departs: {{route.departure_time}}</p>
     <p class="route-arrives">Arrives: {{route.arrival_time}}</p>
   </div>
 
-  <div class="col s7 text-right">
+  <div class="col s12 m7 text-right">
     <p class="route-duration">
-      <span>{{route-duration route.duration}}</span>
+      <i class="fa fa-hourglass-end" aria-hidden="true"></i>
+      <span class="route-dur">{{route-duration route.duration}}</span>
       <i class="fa fa-star set-favorite" aria-hidden="true" {{action "addToFavorites" route bubbles=false }}></i>
     </p>
     <div class="route-modes">
