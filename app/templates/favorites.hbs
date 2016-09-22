@@ -1,9 +1,8 @@
 <div class="favorites-wrapper container">
   <div class="row">
-
       <ul class="col s12">
       {{#each model as |fav|}}
-          {{fav-head fav=fav}}
+          {{fav-head fav=fav removeFav='removeFromFavorites'}}
       {{/each}}
       </ul>
 
