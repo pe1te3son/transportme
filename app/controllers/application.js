@@ -1,8 +1,15 @@
 import Ember from 'ember';
+import $ from 'jquery';
 
 export default Ember.Controller.extend({
   indexedDbPromised: Ember.inject.service('indexed-db'),
   init(){
+    window.addEventListener("offline", ()=>{
+      Materialize.toast('Conection lost. Trying to reconect...');
+    });
+    window.addEventListener("online", ()=>{
+      $('.toast').fadeOut('fast');
+    });
     // Create or open Database before default route is loaded
     Ember.run.once(()=>{
       this.get('indexedDbPromised').createIndexedDbStore({
