@@ -30,6 +30,7 @@ export default Ember.Component.extend({
         const el = $(this.get('element')).find('.set-favorite');
 
         // Set jorney hook
+        event.acknowledgements = this.get('acknowledgements');
         event.fromTo = this.get('fromTo');
         event.favId = `${JSON.parse(JSON.stringify(event.route_parts[0].departure_time)).replace(/\:/gi, '_')}->${this.get('fromTo')}`;
 

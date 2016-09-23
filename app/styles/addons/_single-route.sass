@@ -5,7 +5,7 @@
   padding: 3px 6px
   &:hover
     cursor: pointer
-    color: lighten($color8, 10%)
+    //color: lighten($color8, 10%)
 
 .favorite-added
   color: $color8
@@ -123,4 +123,12 @@
   .set-favorite
     +position(absolute, 70px 5px null null)
     font-size: 2em
-    z-index:
+    z-index: 1000
+
+.recent-acknow
+  color: $color2
+  small
+    color: $color3
+    background: $color2
+    padding: 4px 8px
+    border-radius: 5px 5px 0 0

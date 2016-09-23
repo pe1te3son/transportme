@@ -24,7 +24,7 @@
     <div class="col s12 m10 offset-m1">
       <ul class="list-unstyled">
         {{#each toDisplay.routes as |route|}}
-          {{route-single route=route fromTo=toDisplay.fromTo}}
+          {{route-single route=route fromTo=toDisplay.fromTo acknowledgements=toDisplay.acknowledgements}}
         {{/each}}
       </ul>
     </div>

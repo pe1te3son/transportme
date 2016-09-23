@@ -51,7 +51,7 @@
       {{linear-loader isLoading=loaderOn}}
       <ul class="list-unstyled">
         {{#each model.routes as |route|}}
-          {{route-single route=route fromTo=model.fromTo}}
+          {{route-single route=route fromTo=model.fromTo acknowledgements=model.acknowledgements}}
         {{/each}}
       </ul>
     </div>
