@@ -71,7 +71,6 @@ export default Ember.Controller.extend({
       }).then((route)=>{
         Ember.run.later(()=>{
           this.set('loadingRecent', false);
-          console.log('i ran');
           this.set('recentVisible', true);
           this.set('toDisplay', route);
         }, 500);

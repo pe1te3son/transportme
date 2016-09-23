@@ -3,7 +3,7 @@ import Ember from 'ember';
 /**
 * @name TrasportApi service
 * @desc Fetches a data from trasportApi
-* @param { String } data - lat and lng from google api, time and date are optional
+* @param { Object } data - lat and lng from google api, time and date are optional
 */
 export default Ember.Service.extend({
   requestDataFromTrasportApi(data){
@@ -48,7 +48,6 @@ export default Ember.Service.extend({
 
   // Builds link based on recevied data from search form
   buildRequestLink(data){
-    console.log(data);
 
     const apiKey = '210cd3d0b88f32603edc631a13ce14f9';
     const apiId = '81d2c3ad';
@@ -58,17 +57,13 @@ export default Ember.Service.extend({
     let toLat = data.to.geometry.location.lat();
     let date = this.formatDate(data.routeDate);
     let time = this.formatTime(data.routeTime);
-    console.log(date, time);
+    // '&region=southeast';
 
-    //&region=southeast
-
-    if(date && time) {
+    if (date && time) {
       let link = `https://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}/by/${date}/${time}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
-      console.log(link);
       return link;
     } else {
       let link = `https://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
-      console.log(link);
       return link;
     }
 
