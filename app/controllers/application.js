@@ -9,6 +9,9 @@ export default Ember.Controller.extend({
     });
     window.addEventListener("online", ()=>{
       $('.toast').fadeOut('fast');
+      Ember.run.later(()=>{
+        location.reload();
+      }, 500);
     });
     // Create or open Database before default route is loaded
     Ember.run.once(()=>{
