@@ -1,6 +1,14 @@
 import Ember from 'ember';
 import $ from 'jquery';
 
+/**
+* @name Single jorney Component
+* @desc Displays and controls single journey
+* @requires { indexed-db, route, fromTo, acknowledgements } services
+* @param { Object } route - single route data
+* @param { String } fromTo - jorney id hook
+* @param { String } acknowledgements
+*/
 export default Ember.Component.extend({
   indexedDbPromised: Ember.inject.service('indexed-db'),
   tagName: 'li',

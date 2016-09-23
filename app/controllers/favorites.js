@@ -1,5 +1,10 @@
 import Ember from 'ember';
 
+/**
+* @name Favorite Journeys page Controller
+* @desc Controls favorites page
+* @requires { indexed-db } services
+*/
 export default Ember.Controller.extend({
   indexedDbPromised: Ember.inject.service('indexed-db'),
   actions: {

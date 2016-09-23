@@ -1,5 +1,10 @@
 import Ember from 'ember';
 
+/**
+* @name Materialize desing Modal Component
+* @desc Materialize desing Modal
+* @param { Object } model - data to display
+*/
 export default Ember.Component.extend({
   didRender(){
     this._super();
