@@ -17,8 +17,11 @@ If you want to test an app and don't know London very well, here are some locati
   * Stratford
   * Benthal Road
   * Covent Garden
-  * Paddington, London
+  * Paddington London
   * Victoria Station
+
+
+  ![Screenshort](https://github.com/pe1te3son/cdn/blob/master/transportme/trasportme_screenshot.jpg?raw=true)
 
 ## Prerequisites
 
