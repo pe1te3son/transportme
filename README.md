@@ -7,8 +7,8 @@ Transportation application that displays a list of departures from user selected
 [Live Demo here](https://transportme-26649.firebaseapp.com)
 
 **You may enter any address as long as it is located in London.**
-If you want to test app and don't know London very well, here are some locations you may try:
-> Please make sure you selecting locations from google's autocomplete select menu.
+If you want to test an app and don't know London very well, here are some locations you may want to try:
+> Please make sure, that you are selecting locations from google's autocomplete select menu.
 
   * Brick Lane
   * Oxford Circus Station
@@ -18,6 +18,7 @@ If you want to test app and don't know London very well, here are some locations
   * Benthal Road
   * Covent Garden
   * Paddington, London
+  * Victoria Station
 
 ## Prerequisites
 
@@ -31,9 +32,9 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* clone this repository
-* change into the new directory
-* run following commands:
+* Clone this repository
+* Change into the new directory
+* Run following commands:
   * `npm install -g ember-cli`
   * `npm install`
   * `bower install`
@@ -41,11 +42,11 @@ You will need the following things properly installed on your computer.
 ## Running
 
 * To preview the app run `ember serve`
-* Your app is at [http://localhost:4200](http://localhost:4200).
+* App is running at [http://localhost:4200](http://localhost:4200).
 
 
 ### Building
-* To build app for production run  `ember build --environment production` (production)
+* To build app for production run  `ember build --environment=production`
 * Compressed files are saved in `/dist` folder
 
 ## Further Reading / Useful Links
