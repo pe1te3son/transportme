@@ -1,12 +1,13 @@
 <div class="favorites-wrapper container">
   <div class="row">
+    <h2 class="page-title text-center">Favorite Journeys</h2>
       <ul class="col s12">
       {{#each model as |fav|}}
           {{fav-head fav=fav removeFav='removeFromFavorites'}}
       {{/each}}
       </ul>
 
-    <div class="">
+    <div class="md-modal-cont">
       {{outlet}}
     </div>
 
