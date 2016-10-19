@@ -2,12 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   indexedDbPromised: Ember.inject.service('indexed-db'),
-  model(){
+  model () {
     return this.get('indexedDbPromised').getRoutes({
       $dbName: 'transportme-recent',
       $dbStore: 'recent'
-    }).then((resp)=>{
+    }).then((resp) => {
       return resp;
     });
-  },
+  }
 });

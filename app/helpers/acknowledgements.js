@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
-//Returns string
-export function acknowledgements(params/*, hash*/) {
+// Returns string
+export function acknowledgements (params/*, hash */) {
   return params;
 }
 

@@ -6,7 +6,7 @@ import Ember from 'ember';
 * @param { Array } params - mode and value to return either 'tooltip' or 'faIcon'
 * @return string
 */
-export function routeMode(params/*, hash*/) {
+export function routeMode (params/*, hash */) {
   let [mode, toReturn] = params;
   let routeData = {};
 
@@ -37,9 +37,9 @@ export function routeMode(params/*, hash*/) {
       break;
   }
 
-  if(toReturn === 'faIcon'){
+  if (toReturn === 'faIcon') {
     return routeData.faIcon;
-  } else if(toReturn === 'tooltip'){
+  } else if (toReturn === 'tooltip') {
     return routeData.tooltip;
   }
 }

@@ -6,12 +6,12 @@ import Ember from 'ember';
 * @param { Object } model - data to display
 */
 export default Ember.Component.extend({
-  didRender(){
+  didRender () {
     this._super();
-    const vm =  this;
+    const vm = this;
     Ember.$('#modal1').openModal({
-      complete: ()=>{
-         vm.get('router').transitionTo('favorites');
+      complete: () => {
+        vm.get('router').transitionTo('favorites');
       }
     });
   }

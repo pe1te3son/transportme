@@ -6,7 +6,7 @@ import Ember from 'ember';
 * @param { Array } params - 2 values
 * @return boolean
 */
-export function compare(params/*, hash*/) {
+export function compare (params/*, hash */) {
   return params[0] === params[1];
 }
 

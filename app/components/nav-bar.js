@@ -7,10 +7,10 @@ import $ from 'jquery';
 * @param none
 */
 export default Ember.Component.extend({
-  didInsertElement(){
+  didInsertElement () {
     this._super();
-    Ember.run.scheduleOnce('afterRender', this, function(){
-     $(".button-collapse").sideNav();
-   });
- },
+    Ember.run.scheduleOnce('afterRender', this, function () {
+      $('.button-collapse').sideNav();
+    });
+  }
 });

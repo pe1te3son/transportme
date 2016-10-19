@@ -17,81 +17,72 @@ export default Ember.Controller.extend({
   recentVisible: false,
 
   actions: {
-    toLocSelected(itemSelected){
+    toLocSelected (itemSelected) {
       this.set('toLocation', itemSelected);
     },
 
-    fromLocSelected(itemSelected){
+    fromLocSelected (itemSelected) {
       this.set('fromLocation', itemSelected);
     }
   },
 
   // Watch for changes on input
-  fromLocationObserver: function(){
-
-      //Search based on "from location" input if found update "to location"
-      let routeFound = this.get('model').filterBy('from', this.get('fromLocation'));
-      if(!routeFound.length){
-        this.set('recentVisible', false);
-        // Resets selection list if default selected
-        this.set('toLocationList', null);
-        return;
-      }
-      this.set('toLocationList', routeFound);
-      this.displayRecent();
-
-
+  fromLocationObserver: function () {
+    // Search based on "from location" input if found update "to location"
+    let routeFound = this.get('model').filterBy('from', this.get('fromLocation'));
+    if (!routeFound.length) {
+      this.set('recentVisible', false);
+      // Resets selection list if default selected
+      this.set('toLocationList', null);
+      return;
+    }
+    this.set('toLocationList', routeFound);
+    this.displayRecent();
   }.observes('fromLocation'),
 
-  toLocationObserver: function(){
-    // wait for animation
+  toLocationObserver: function () {
+    // Filter based on "from location" input if found update "to location"
+    let routeFound = this.get('model').filterBy('to', this.get('toLocation'));
 
-      //Filter based on "from location" input if found update "to location"
-      let routeFound = this.get('model').filterBy('to', this.get('toLocation'));
-
-      if(!routeFound.length){
-        this.set('recentVisible', false);
-        this.set('fromLocationList', null);
-        return;
-      }
-      this.set('fromLocationList', routeFound);
-      this.displayRecent();
-
-
+    if (!routeFound.length) {
+      this.set('recentVisible', false);
+      this.set('fromLocationList', null);
+      return;
+    }
+    this.set('fromLocationList', routeFound);
+    this.displayRecent();
   }.observes('toLocation'),
 
-  displayRecent(){
+  displayRecent () {
     this.set('recentVisible', false);
-    if(this.get('fromLocation') && this.get('toLocation')){
+    if (this.get('fromLocation') && this.get('toLocation')) {
       this.set('loadingRecent', true);
-        return this.get('indexedDbPromised').getById({
-          $dbName: 'transportme-recent',
-          $dbStore: 'recent',
-          $id: `${this.get('fromLocation')}->${this.get('toLocation')}`.replace(/ /gi, "_")
-      }).then((route)=>{
-        Ember.run.later(()=>{
+      return this.get('indexedDbPromised').getById({
+        $dbName: 'transportme-recent',
+        $dbStore: 'recent',
+        $id: `${this.get('fromLocation')}->${this.get('toLocation')}`.replace(/ /gi, '_')
+      }).then((route) => {
+        Ember.run.later(() => {
           this.set('loadingRecent', false);
           this.set('recentVisible', true);
           this.set('toDisplay', route);
         }, 500);
-
-      }).then( ()=> this.toggleAnimation('.select-result-cont', 'cont-back', 'add') );
+      }).then(() => this.toggleAnimation('.select-result-cont', 'cont-back', 'add'));
     }
-  },//displayRecent
+  }, // displayRecent
 
   // Slides up or down
-  toggleAnimation($el, $animation, $option){
-    return new Promise((resolve, reject)=>{
-
-      if($option === 'add'){
+  toggleAnimation ($el, $animation, $option) {
+    return new Promise((resolve, reject) => {
+      if ($option === 'add') {
         resolve($($el).addClass($animation));
-      } else if( $option === 'remove' ){
+      } else if ($option === 'remove') {
         resolve($($el).removeClass($animation));
       }
 
       reject('No option provided!');
-    }).catch((err)=>{
+    }).catch((err) => {
       console.error(`function toggleAnimation(): ${err}`);
     });
-  },
+  }
 });

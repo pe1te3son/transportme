@@ -8,17 +8,15 @@ import Ember from 'ember';
 * @param { Array } params - object, object property, optional array
 * @return array
 */
-export function uniqList(params/*, hash*/) {
-
+export function uniqList (params/*, hash */) {
   const [ $object, $property, $optional ] = params;
 
-  if(!$optional){
-    if($object){
+  if (!$optional) {
+    if ($object) {
       return $object.getEach($property).uniq();
     }
   }
   return $optional.getEach($property).uniq();
-
 }
 
 export default Ember.Helper.helper(uniqList);

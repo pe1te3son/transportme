@@ -12,7 +12,7 @@ export default Ember.Component.extend({
   classNames: 'col l6 s12 m10 offset-m1',
 
   actions: {
-    removeFavorite(){
+    removeFavorite () {
       this.sendAction('removeFav', this.get('fav').favId);
     }
   }

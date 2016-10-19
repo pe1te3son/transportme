@@ -53,5 +53,13 @@
     "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1",
     "node-sass": "3.4.2"
+  },
+  "semistandard": {
+    "globals": [ "Materialize" ],
+    "ignore": [
+      "testem.js",
+      "/tests/",
+      "/vendor/"
+    ]
   }
 }

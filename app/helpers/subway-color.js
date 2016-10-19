@@ -7,7 +7,7 @@ import Ember from 'ember';
 * @requires css classes styles to be set
 * @return string
 */
-export function subwayColor(params/*, hash*/) {
+export function subwayColor (params/*, hash */) {
   let [subwayName] = params;
   let subwayColor = '';
 

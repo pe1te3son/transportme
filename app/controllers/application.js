@@ -3,18 +3,20 @@ import $ from 'jquery';
 
 export default Ember.Controller.extend({
   indexedDbPromised: Ember.inject.service('indexed-db'),
-  init(){
-    window.addEventListener("offline", ()=>{
+  init () {
+    window.addEventListener('offline', () => {
+      /* global Materialize */
       Materialize.toast('Conection lost. Trying to reconect...');
     });
-    window.addEventListener("online", ()=>{
+    window.addEventListener('online', () => {
       $('.toast').fadeOut('fast');
-      Ember.run.later(()=>{
+      Ember.run.later(() => {
+        /* global location */
         location.reload();
       }, 500);
     });
     // Create or open Database before default route is loaded
-    Ember.run.once(()=>{
+    Ember.run.once(() => {
       this.get('indexedDbPromised').createIndexedDbStore({
         $dbName: 'transportme-favorites',
         $dbStore: 'favorites',
@@ -29,8 +31,6 @@ export default Ember.Controller.extend({
         $keyPath: 'fromTo',
         $index: ['by-date', 'request_time']
       });
-
     });
-
-  },
+  }
 });
