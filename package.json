@@ -59,7 +59,9 @@
     "ignore": [
       "testem.js",
       "/tests/",
-      "/vendor/"
+      "/vendor/",
+      "/config/",
+      "ember-cli-build.js"
     ]
   }
 }

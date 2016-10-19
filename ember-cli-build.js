@@ -1,17 +1,17 @@
 /* jshint node:true */
 /* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
-var nodeSass = require('node-sass'); // loads the version in your package.json
+var EmberApp = require("ember-cli/lib/broccoli/ember-app");
+var nodeSass = require("node-sass"); // loads the version in your package.json
 
 module.exports = function (defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
     sassOptions: {
-      extension: 'sass',
+      extension: "sass",
       includePaths: [
-        'bower_components/materialize/sass'
+        "bower_components/materialize/sass"
       ],
-      nodeSass: nodeSass // Workaround for ember-cli-sass bug https://github.com/aexmachina/ember-cli-sass/issues/117
+      nodeSass // Workaround for ember-cli-sass bug https://github.com/aexmachina/ember-cli-sass/issues/117
     }
   });
 
@@ -27,9 +27,9 @@ module.exports = function (defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-  app.import('bower_components/pickadate/lib/picker.time.js');
-  app.import('vendor/indexedDB-promised.js');
-  app.import('vendor/prototypes.js');
+  app.import("bower_components/pickadate/lib/picker.time.js");
+  app.import("vendor/indexedDB-promised.js");
+  app.import("vendor/prototypes.js");
 
   return app.toTree();
 };
