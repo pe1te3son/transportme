@@ -65,7 +65,7 @@
 
   function proxyCursorRequestMethods(ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function(prop) {
-      if (!(prop in Constructor.prototype)) return;
+      if (!(prop in Constructor.prototype)) { return; }
       ProxyClass.prototype[prop] = function() {
         return promisifyCursorRequestCall(this[targetProp], prop, arguments);
       };
@@ -122,7 +122,7 @@
       return Promise.resolve().then(function() {
         cursor._cursor[methodName].apply(cursor._cursor, args);
         return promisifyRequest(cursor._request).then(function(value) {
-          if (!value) return;
+          if (!value) { return; }
           return new Cursor(value, cursor._request);
         });
       });
