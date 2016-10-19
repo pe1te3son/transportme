@@ -1,6 +1,7 @@
 # Transportme
 
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+[![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/22625a349d2746eb9ad9f4b10598ee6a)](https://www.codacy.com/app/2010janak2010/transportme?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pe1te3son/transportme&amp;utm_campaign=Badge_Grade)
 
 Transportation application that displays a list of departures from user selected location. It uses google autocomplete API which is passing data to TrasportApi and then displaying selected journey. The app is equally functional on mobile and desktop. The application uses a service worker to cache necessary files and in the case of losing connection, it allows to work with recently searched or favorite journeys by storing them into the indexedDb database.
