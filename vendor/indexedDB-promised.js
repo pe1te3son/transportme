@@ -30,7 +30,7 @@
   function promisifyCursorRequestCall(obj, method, args) {
     var p = promisifyRequestCall(obj, method, args);
     return p.then(function(value) {
-      if (!value) return;
+      if (!value) { return; }
       return new Cursor(value, p.request);
     });
   }
@@ -56,7 +56,7 @@
 
   function proxyMethods(ProxyClass, targetProp, Constructor, properties) {
     properties.forEach(function(prop) {
-      if (!(prop in Constructor.prototype)) return;
+      if (!(prop in Constructor.prototype)) { return; }
       ProxyClass.prototype[prop] = function() {
         return this[targetProp][prop].apply(this[targetProp], arguments);
       };
@@ -115,7 +115,7 @@
 
   // proxy "next" methods
   ["advance", "continue", "continuePrimaryKey"].forEach(function(methodName) {
-    if (!(methodName in IDBCursor.prototype)) return;
+    if (!(methodName in IDBCursor.prototype)) { return; }
     Cursor.prototype[methodName] = function() {
       var cursor = this;
       var args = arguments;
@@ -249,7 +249,7 @@
 
   // polyfill getAll
   [Index, ObjectStore].forEach(function(Constructor) {
-    if (Constructor.prototype.getAll) return;
+    if (Constructor.prototype.getAll) { return; }
     Constructor.prototype.getAll = function(query, count) {
       var instance = this;
       var items = [];
@@ -262,7 +262,7 @@
           }
           items.push(cursor.value);
 
-          if (count !== undefined && items.length == count) {
+          if (typeof count !== "undefined" && items.length == count) {
             resolve(items);
             return;
           }
@@ -273,7 +273,7 @@
   });
 
   var exp = {
-    open: function(name, version, upgradeCallback) {
+    open(name, version, upgradeCallback) {
       var p = promisifyRequestCall(indexedDB, "open", [name, version]);
       var request = p.request;
 
@@ -287,7 +287,7 @@
         return new DB(db);
       });
     },
-    delete: function(name) {
+    delete(name) {
       return promisifyRequestCall(indexedDB, "deleteDatabase", [name]);
     }
   };
