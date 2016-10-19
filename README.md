@@ -1,5 +1,8 @@
 # Transportme
 
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+
+
 Transportation application that displays a list of departures from user selected location. It uses google autocomplete API which is passing data to TrasportApi and then displaying selected journey. The app is equally functional on mobile and desktop. The application uses a service worker to cache necessary files and in the case of losing connection, it allows to work with recently searched or favorite journeys by storing them into the indexedDb database.
 
 **This app only works for journeys within London area.**
