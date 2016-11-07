@@ -1,1 +1,21 @@
-{{outlet}}
+<div class="container trains-page">
+  <div class="row">
+
+       <div class="input-field col s12 m6 l5 offset-l1">
+         <i class="material-icons prefix" aria-hidden="true">search</i>
+         {{input type="text" id="autocomplete-input" class="autocomplete" value=departureStation placeholder="Departure"}}
+         <label for="autocomplete-input">Departure station</label>
+       </div>
+       <div class="input-field col s12 m6 l5">
+         <i class="material-icons prefix">location_on</i>
+        <select>
+          <option value="" selected>Choose station</option>
+          {{#each model.departures.all as |station|}}
+            <option value="1">{{station.destination_name}}</option>
+          {{/each}}
+        </select>
+        <label>Destination</label>
+      </div>
+
+ </div>
+</div>
