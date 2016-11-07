@@ -32,5 +32,14 @@ export default Ember.Controller.extend({
         $index: ['by-date', 'request_time']
       });
     });
-  }
+  },
+
+  currentPathDidChange: function () {
+    Ember.run.schedule('afterRender', () => {
+      if (this.get('currentPath') === 'trains') {
+        $('select').material_select();
+        Materialize.updateTextFields();
+      }
+    });
+  }.observes('currentPath')
 });
