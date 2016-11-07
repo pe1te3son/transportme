@@ -20,6 +20,7 @@ Router.map(function () {
   this.route('favorites', function () {
     this.route('show-favorite', {path: '/:fromTo'});
   });
+  this.route('trains');
 });
 
 export default Router;
