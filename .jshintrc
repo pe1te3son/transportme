@@ -4,7 +4,8 @@
     "window",
     "-Promise",
     "Promise",
-    "Materialize"
+    "Materialize",
+    "fetch"
   ],
   "browser": true,
   "boss": true,

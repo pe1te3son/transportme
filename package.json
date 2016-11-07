@@ -57,7 +57,8 @@
   },
   "semistandard": {
     "globals": [
-      "Materialize"
+      "Materialize",
+      "fetch"
     ],
     "ignore": [
       "testem.js",
