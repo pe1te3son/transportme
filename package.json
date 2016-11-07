@@ -52,13 +52,15 @@
     "ember-truth-helpers": "1.2.0",
     "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1",
-    "node-sass": "3.4.2"
+    "node-sass": "3.4.2",
+    "semistandard": "^9.1.0"
   },
   "semistandard": {
-    "globals": [ "Materialize" ],
+    "globals": [
+      "Materialize"
+    ],
     "ignore": [
       "testem.js",
-      "/tests/",
       "/vendor/",
       "/config/",
       "ember-cli-build.js"
