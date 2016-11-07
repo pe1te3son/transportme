@@ -14,13 +14,13 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-  this.route('home', {path: '/'});
+  this.route('home', {path: '/plan-your-jorney'});
   this.route('recent');
   this.route('404', {path: '/*path'});
   this.route('favorites', function () {
     this.route('show-favorite', {path: '/:fromTo'});
   });
-  this.route('trains');
+  this.route('trains', {path: '/'});
 });
 
 export default Router;
