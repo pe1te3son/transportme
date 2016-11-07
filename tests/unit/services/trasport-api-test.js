@@ -6,7 +6,7 @@ moduleFor('service:trasport-api', 'Unit | Service | trasport api', {
 });
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
+test('it exists', function (assert) {
   let service = this.subject();
   assert.ok(service);
 });

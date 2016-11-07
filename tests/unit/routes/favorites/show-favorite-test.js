@@ -5,7 +5,7 @@ moduleFor('route:favorites/show-favorite', 'Unit | Route | favorites/show favori
   // needs: ['controller:foo']
 });
 
-test('it exists', function(assert) {
+test('it exists', function (assert) {
   let route = this.subject();
   assert.ok(route);
 });

@@ -5,8 +5,8 @@ import { module, test } from 'qunit';
 let application;
 
 module('Unit | Initializer | component router injector', {
-  beforeEach() {
-    Ember.run(function() {
+  beforeEach () {
+    Ember.run(function () {
       application = Ember.Application.create();
       application.deferReadiness();
     });
@@ -14,7 +14,7 @@ module('Unit | Initializer | component router injector', {
 });
 
 // Replace this with your real tests.
-test('it works', function(assert) {
+test('it works', function (assert) {
   ComponentRouterInjectorInitializer.initialize(application);
 
   // you would normally confirm the results of the initializer here
