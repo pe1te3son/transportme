@@ -47,8 +47,6 @@
     "ember-new-computed": "1.0.3",
     "ember-radio-button": "1.0.7",
     "ember-resolver": "^2.0.3",
-    "ember-service-worker": "0.5.1",
-    "ember-service-worker-asset-cache": "0.4.0",
     "ember-truth-helpers": "1.2.0",
     "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1",
@@ -61,10 +59,12 @@
       "fetch"
     ],
     "ignore": [
+      "node_modules",
+      "bower_components",
       "testem.js",
-      "/vendor/",
-      "/config/",
-      "ember-cli-build.js"
+      "/vendor/**/*",
+      "ember-cli-build.js",
+      "/config/**/*"
     ]
   }
 }
