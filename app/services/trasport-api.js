@@ -64,6 +64,13 @@ export default Ember.Service.extend({
       let link = `https://transportapi.com/v3/uk/public/journey/from/lonlat:${fromLng},${fromLat}/to/lonlat:${toLng},${toLat}.json?api_key=${apiKey}&app_id=${apiId}&modes=bus-train-tube`;
       return link;
     }
+  },
+
+  buildNearbyStationsLink (data) {
+    const apiKey = '210cd3d0b88f32603edc631a13ce14f9';
+    const apiId = '81d2c3ad';
+    return `http://transportapi.com/v3/uk/train/stations/near.json?app_id=${apiId}&app_key=${apiKey}&lat=${data.lat}&lon=${data.lng}`;
+  },
   }
 
 });
