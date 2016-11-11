@@ -16,6 +16,23 @@ export default Ember.Controller.extend({
     this.setDestinationSelectList(initialStation.station_code);
   },
 
+  actions: {
+    destinationSelected (destination) {
+      let selectedService = this.get('destinations').filterBy('destination_name', destination);
+      this.set('timetable', selectedService);
+    },
+    departureSelected (departureStation) {
+      const $selectEl = $('.station-select');
+
+      $selectEl.attr('disabled', 'disabled');
+      $('select').material_select();
+      this.set('timetable', null);
+      this.setDestinationSelectList(departureStation).then(() => {
+        $selectEl.removeAttr('disabled');
+      });
+    }
+  },
+
   setDestinationSelectList (stationCode) {
     return this.get('transportApiSrv').getTrainSchedule({stationCode})
       .then(response => {
