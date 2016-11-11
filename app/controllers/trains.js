@@ -16,4 +16,13 @@ export default Ember.Controller.extend({
     this.setDestinationSelectList(initialStation.station_code);
   },
 
+  setDestinationSelectList (stationCode) {
+    return this.get('transportApiSrv').getTrainSchedule({stationCode})
+      .then(response => {
+        this.set('destinations', response.departures.all);
+        Ember.run.later(() => {
+          $('select').material_select();
+        }, 500);
+      });
+  }
 });
