@@ -48,6 +48,20 @@ export default Ember.Service.extend({
         autocomplete.setBounds(circle.getBounds());
       });
     }
-  } // geolocate
+  }, // geolocate
+
+  getCurrentCoordinates () {
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) { reject(); }
+
+      navigator.geolocation.getCurrentPosition(position => {
+        let geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        resolve(geolocation);
+      });
+    });
+  }
 
 });
