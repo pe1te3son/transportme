@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
   currentPathDidChange: function () {
     Ember.run.schedule('afterRender', () => {
       if (this.get('currentPath') === 'trains') {
-        $('select').material_select();
+        // $('select').material_select();
         Materialize.updateTextFields();
       }
     });
