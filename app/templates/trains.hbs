@@ -1,7 +1,7 @@
 <div class="container trains-page">
   <div class="row">
     <div class="input-field col s12 m6 l5 offset-l1">
-      <i class="material-icons prefix" aria-hidden="true">search</i>
+      <i class="material-icons prefix select-icon" aria-hidden="true">search</i>
       {{input type="text" id="autocomplete-input" class="autocomplete" value=searchLocation placeholder="Location"}}
       <label for="autocomplete-input">Enter your location</label>
     </div>
@@ -11,7 +11,7 @@
  <div class="row select-train">
 
    <div class="input-field col s12 m6 l5 offset-l1">
-     <i class="material-icons prefix">location_on</i>
+     <i class="material-icons prefix select-icon">directions_railway</i>
     <select class="departures-select station-select" onchange={{ action 'departureSelected' value="target.value"}}>
       <option value="0">Choose station</option>
       {{#each model.stations as |station|}}
@@ -22,7 +22,7 @@
   </div>
 
    <div class="input-field col s12 m6 l5">
-     <i class="material-icons prefix">location_on</i>
+     <i class="material-icons prefix select-icon">location_on</i>
     <select class="destinations-select station-select" onchange={{ action 'destinationSelected' value="target.value"}}>
       <option value="" selected>Choose station</option>
       {{#each (filter-destinations destinations 'destination_name') as |station|}}
