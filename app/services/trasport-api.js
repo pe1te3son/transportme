@@ -71,6 +71,13 @@ export default Ember.Service.extend({
     const apiId = '81d2c3ad';
     return `http://transportapi.com/v3/uk/train/stations/near.json?app_id=${apiId}&app_key=${apiKey}&lat=${data.lat}&lon=${data.lng}`;
   },
+
+  getTrainSchedule (data) {
+    const url = `http://transportapi.com/v3/uk/train/station/${data.stationCode}/2016-11-11/10:00/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
+    return fetch(url)
+      .then(response => {
+        return response.json();
+      });
   }
 
 });
