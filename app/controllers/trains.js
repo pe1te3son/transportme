@@ -16,6 +16,23 @@ export default Ember.Controller.extend({
     this.setDestinationSelectList(initialStation.station_code);
   },
 
+  beatifyDatepickerValue: function () {
+    if (this.get('datepickerValue')) {
+      return moment(this.get('datepickerValue')).format('DD MMM YYYY');
+    }
+  }.property('datepickerValue'),
+
+  beatifyTimepickerValue: function () {
+    let time = this.get('trainsTimeValue');
+    if (time) {
+      if (time % 60 === 0) {
+        return `${time / 60}:00`;
+      } else {
+        return `${(time - 30) / 60}:30`;
+      }
+    }
+  }.property('trainsTimeValue'),
+
   actions: {
     destinationSelected (destination) {
       let selectedService = this.get('destinations').filterBy('destination_name', destination);
