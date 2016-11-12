@@ -55,8 +55,19 @@ export default Ember.Controller.extend({
       .then(response => {
         this.set('destinations', response.departures.all);
         Ember.run.later(() => {
+          $('select.departures-select').children().eq(1).attr('selected', 'selected');
           $('select').material_select();
         }, 500);
+        return response;
+      })
+      .then(res => {
+        this.get('indexedDbPromised').saveToDb({
+          $dbName: 'transportme-trains',
+          $dbStore: 'trains',
+          $value: res
+        }).then(() => {
+          console.log('added to db');
+        });
       });
   }
 });
