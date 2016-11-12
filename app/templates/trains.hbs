@@ -1,10 +1,17 @@
 <div class="container trains-page">
-  <div class="row">
-    <div class="input-field col s12 m6 l5 offset-l1">
-      <i class="material-icons prefix select-icon" aria-hidden="true">search</i>
-      {{input type="text" id="autocomplete-input" class="autocomplete" value=searchLocation placeholder="Location"}}
-      <label for="autocomplete-input">Enter your location</label>
-    </div>
+ <div class="row">
+
+   <div class="col s12 m8 l8 offset-m2 offset-l2 card-panel user-location grey lighten-4">
+     <div class="input-field col s8">
+       {{input type="text" id="trains-date-picker" placeholder="Date" class="validate" focus-in="trainsDatepicker" value=beatifyDatepickerValue}}
+       <label for="trains-date-picker" class="hide">Date</label>
+     </div>
+
+     <div class="input-field col s4">
+       {{input type="text" id="trains-time-picker" placeholder="Time" class="validate" focus-in="trainsTimePicker" value=beatifyTimepickerValue}}
+       <label for="trains-time-picker" class="hide">Time</label>
+     </div>
+
  </div>
 
 {{log model}}

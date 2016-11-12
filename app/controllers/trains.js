@@ -47,6 +47,31 @@ export default Ember.Controller.extend({
       this.setDestinationSelectList(departureStation).then(() => {
         $selectEl.removeAttr('disabled');
       });
+    },
+
+    trainsDatepicker (e) {
+      const _this = this;
+      $('#trains-date-picker').pickadate({
+        min: () => {
+          return new Date();
+        },
+        onSet: function (date) {
+          console.log(date.select);
+          _this.set('datepickerValue', date.select);
+        }
+      });
+    },
+
+    trainsTimePicker () {
+      const _this = this;
+      $('#trains-time-picker').pickatime({
+        onSet: function (time) {
+          _this.set('trainsTimeValue', time.select);
+          this.close();
+        }
+      });
+    },
+
     }
   },
 
