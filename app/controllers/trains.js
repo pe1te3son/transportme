@@ -1,8 +1,11 @@
 import Ember from 'ember';
 import $ from 'jquery';
+import moment from 'npm:moment';
 
 export default Ember.Controller.extend({
   transportApiSrv: Ember.inject.service('trasport-api'),
+  geolocateSrv: Ember.inject.service('geolocation-srv'),
+  indexedDbPromised: Ember.inject.service('indexed-db'),
   searchLocation: null,
   destinations: null,
   selectedDestination: null,
@@ -10,9 +13,9 @@ export default Ember.Controller.extend({
 
   setInitialState () {
     const initialStation = this.get('model').stations[0];
-    this.set('searchLocation', initialStation.name);
-    $('.departures-select').children().eq(1).attr('selected', 'selected');
-
+    if (this.get('searchLocation') === null) {
+      this.set('searchLocation', initialStation.name);
+    }
     this.setDestinationSelectList(initialStation.station_code);
   },
 
@@ -72,7 +75,31 @@ export default Ember.Controller.extend({
       });
     },
 
+    autoComleteInit () {
+      this.get('geolocateSrv').initAutocomplete('autocomplete-input', 'autocompletePayload');
+    },
+
+    getTrains () {
+      let data = this.get('geolocateSrv').fetchRouteData();
+      this.getNearbyStations({
+        lat: data.autocompletePayload.geometry.location.lat(),
+        lng: data.autocompletePayload.geometry.location.lng()
+      })
+        .then(response => {
+          this.set('model', response);
+          this.setInitialState();
+        })
+        .then(() => {
+
+        });
     }
+  }, // Actions
+
+  getNearbyStations (location) {
+    return fetch(`http://transportapi.com/v3/uk/train/stations/near.json?app_id=81d2c3ad&app_key=210cd3d0b88f32603edc631a13ce14f9&lat=${location.lat}&lon=${location.lng}`)
+      .then(response => {
+        return response.json();
+      });
   },
 
   setDestinationSelectList (stationCode) {

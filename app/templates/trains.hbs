@@ -12,6 +12,17 @@
        <label for="trains-time-picker" class="hide">Time</label>
      </div>
 
+     <div class="input-field col s12">
+       <i class="material-icons prefix select-icon" aria-hidden="true">search</i>
+       {{input type="text" id="autocomplete-input" class="autocomplete" value=searchLocation placeholder="Location" focus-in="autoComleteInit"}}
+       <label for="autocomplete-input">Enter your location</label>
+     </div>
+
+     <div class="col s12 text-right search-trains-button">
+       <a class="btn-floating btn-large waves-effect waves-light teal" {{action "getTrains"}}><i class="material-icons">send</i></a>
+     </div>
+   </div>
+
  </div>
 
 {{log model}}
