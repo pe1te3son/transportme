@@ -1,7 +1,7 @@
 <div class="container trains-page">
  <div class="row">
 
-   <div class="col s12 m8 l8 offset-m2 offset-l2 card-panel user-location grey lighten-4">
+   <div class="col s12 m8 l6 offset-m2 offset-l3 card-panel user-location grey lighten-4">
      <div class="input-field col s8">
        {{input type="text" id="trains-date-picker" placeholder="Date" class="validate" focus-in="trainsDatepicker" value=beatifyDatepickerValue}}
        <label for="trains-date-picker" class="hide">Date</label>
@@ -19,13 +19,12 @@
      </div>
 
      <div class="col s12 text-right search-trains-button">
-       <a class="btn-floating btn-large waves-effect waves-light teal" {{action "getTrains"}}><i class="material-icons">send</i></a>
+       <button class="btn-floating btn-large waves-effect waves-light teal" {{action "getTrains"}}><i class="material-icons">send</i></button>
      </div>
    </div>
 
  </div>
 
-{{log model}}
  <div class="row select-train">
 
    <div class="input-field col s12 m6 l5 offset-l1">
