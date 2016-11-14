@@ -26,6 +26,11 @@ export default Ember.Route.extend({
         $keyPath: 'station_code',
         $index: ['by-date', 'request_time']
       });
+      this.get('indexedDbPromised').createIndexedDbStore({
+        $dbName: 'transportme-nearby',
+        $dbStore: 'nearby',
+        $dbVersion: 1
+      });
     });
   }
 });
