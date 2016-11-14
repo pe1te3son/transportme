@@ -52,6 +52,11 @@ export default Ember.Controller.extend({
       this.set('timetable', null);
       this.setDestinationSelectList(departureStation).then(() => {
         $selectEl.removeAttr('disabled');
+      })
+      .catch(() => {
+        $selectEl.removeAttr('disabled');
+        Materialize.toast('You are Offline!', 3000);
+        $('select').material_select();
       });
     },
 
