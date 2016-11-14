@@ -53,7 +53,7 @@ You will need the following things properly installed on your computer.
 
 
 ### Building
-* To build app for production run  `ember build --environment=production`
+* To build app for production run  `ember b --prod`
 * Compressed files are saved in `/dist` folder
 
 ## Further Reading / Useful Links
