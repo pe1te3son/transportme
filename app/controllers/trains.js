@@ -44,6 +44,7 @@ export default Ember.Controller.extend({
       this.set('timetable', selectedService);
     },
     departureSelected (departureStation) {
+      if (departureStation === '0') { return; }
       const $selectEl = $('.station-select');
 
       $selectEl.attr('disabled', 'disabled');
