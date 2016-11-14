@@ -73,7 +73,13 @@ export default Ember.Service.extend({
   },
 
   getTrainSchedule (data) {
-    const url = `http://transportapi.com/v3/uk/train/station/${data.stationCode}/2016-11-11/10:00/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
+    let url;
+    if (data.time) {
+      url = `http://transportapi.com/v3/uk/train/station/${data.stationCode}/${data.date}/${data.time}/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
+    } else {
+      url = `http://transportapi.com/v3/uk/train/station/${data.stationCode}/${data.date}/08:00/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
+    }
+
     return fetch(url)
       .then(response => {
         return response.json();
