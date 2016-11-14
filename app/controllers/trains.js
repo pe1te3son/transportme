@@ -28,11 +28,7 @@ export default Ember.Controller.extend({
   beatifyTimepickerValue: function () {
     let time = this.get('trainsTimeValue');
     if (time) {
-      if (time % 60 === 0) {
-        return `${time / 60}:00`;
-      } else {
-        return `${(time - 30) / 60}:30`;
-      }
+      return this.convertTime(time);
     }
   }.property('trainsTimeValue'),
 
@@ -121,5 +117,13 @@ export default Ember.Controller.extend({
           console.log('added to db');
         });
       });
+  convertTime (time) {
+    if (time) {
+      if (time % 60 === 0) {
+        return `${time / 60}:00`;
+      } else {
+        return `${(time - 30) / 60}:30`;
+      }
+    }
   }
 });
