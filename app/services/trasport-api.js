@@ -69,15 +69,15 @@ export default Ember.Service.extend({
   buildNearbyStationsLink (data) {
     const apiKey = '210cd3d0b88f32603edc631a13ce14f9';
     const apiId = '81d2c3ad';
-    return `http://transportapi.com/v3/uk/train/stations/near.json?app_id=${apiId}&app_key=${apiKey}&lat=${data.lat}&lon=${data.lng}`;
+    return `https://transportapi.com/v3/uk/train/stations/near.json?app_id=${apiId}&app_key=${apiKey}&lat=${data.lat}&lon=${data.lng}`;
   },
 
   getTrainSchedule (data) {
     let url;
     if (data.time) {
-      url = `http://transportapi.com/v3/uk/train/station/${data.stationCode}/${data.date}/${data.time}/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
+      url = `https://transportapi.com/v3/uk/train/station/${data.stationCode}/${data.date}/${data.time}/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
     } else {
-      url = `http://transportapi.com/v3/uk/train/station/${data.stationCode}/${data.date}/08:00/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
+      url = `https://transportapi.com/v3/uk/train/station/${data.stationCode}/${data.date}/08:00/timetable.json?app_id=03bf8009&app_key=d9307fd91b0247c607e098d5effedc97&station_detail=origin,destination&train_status=passenger`;
     }
 
     return fetch(url)

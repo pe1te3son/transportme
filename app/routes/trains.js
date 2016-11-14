@@ -52,12 +52,12 @@ export default Ember.Route.extend({
   },
 
   getNearbyStations (location) {
-    return fetch(`http://transportapi.com/v3/uk/train/stations/near.json?app_id=81d2c3ad&app_key=210cd3d0b88f32603edc631a13ce14f9&lat=${location.lat}&lon=${location.lng}`)
+    return fetch(`https://transportapi.com/v3/uk/train/stations/near.json?app_id=81d2c3ad&app_key=210cd3d0b88f32603edc631a13ce14f9&lat=${location.lat}&lon=${location.lng}`)
       .then(response => {
         return response.json();
       })
       .catch(res => {
-        console.log('fetch failed');
+        console.log(res + 'fetch failed');
       });
   },
 
