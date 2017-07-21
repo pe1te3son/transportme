@@ -88,7 +88,11 @@ export default Ember.Controller.extend({
 
     // Fetch and save nearby station
     getTrains () {
-      let data = this.get('geolocateSrv').fetchRouteData();
+      const data = this.get('geolocateSrv').fetchRouteData();
+      const $selectEl = $('.station-select');
+      $selectEl.attr('disabled', 'disabled');
+      $('select').material_select();
+
       return this.getNearbyStations({
         lat: data.autocompletePayload.geometry.location.lat(),
         lng: data.autocompletePayload.geometry.location.lng()
@@ -99,6 +103,8 @@ export default Ember.Controller.extend({
           return response;
         })
         .then((resp) => {
+          $selectEl.removeAttr('disabled');
+          $('select').material_select();
           this.get('indexedDbPromised').saveToDb({
             $dbName: 'transportme-nearby',
             $dbStore: 'nearby',

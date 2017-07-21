@@ -48,13 +48,13 @@
     "ember-new-computed": "1.0.3",
     "ember-radio-button": "1.0.7",
     "ember-resolver": "^2.0.3",
-    "ember-truth-helpers": "1.2.0",
-    "ember-welcome-page": "^1.0.1",
     "ember-service-worker": "0.5.1",
     "ember-service-worker-asset-cache": "0.4.0",
+    "ember-truth-helpers": "1.2.0",
+    "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1",
     "moment": "^2.16.0",
-    "node-sass": "3.4.2",
+    "node-sass": "^4.5.3",
     "semistandard": "^9.1.0"
   },
   "semistandard": {
